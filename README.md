@@ -1,1 +1,1 @@
-@/tmp/nivahv1-parts/file_1_content.txt
+file:///tmp/nivahv1-parts/file_1_content.txt
