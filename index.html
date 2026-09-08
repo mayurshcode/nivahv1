@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ashtavinayak | Eight Sacred Forms of Lord Ganesha</title>
-  <meta name="description" content="The Ashtavinayak Yatra — eight swayambhu Ganesha temples around Pune, Maharashtra. Mayureshwar, Siddhivinayak, Ballaleshwar, Varadavinayak, Chintamani, Girijatmaj, Vighneshwar, and Mahaganapati." />
+  <title>श्री अष्टविनायक दर्शन | Sacred Ashtavinayak Darshan & Daily Blessings</title>
+  <meta name="description" content="श्री अष्टविनायक दर्शन — अनुभव करा प्रसन्नता, शांती आणि सकारात्मक ऊर्जा. Daily auspicious blessings, virtual darshan, and prayers for well-being." />
   <link rel="icon" href="images/ashtavinayak-om.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Sans+Devanagari:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Noto+Serif+Devanagari:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --saffron: #c45c1a;
-      --gold: #d4a017;
-      --maroon: #6b1d1d;
-      --ink: #2c1810;
-      --cream: #faf4e8;
-      --paper: #fffaf1;
-      --muted: #6e5344;
+      --bg-dark: #0c0805;
+      --bg-sanctum: #140d09;
+      --bg-card: rgba(26, 17, 12, 0.78);
+      --bg-card-hover: rgba(38, 24, 16, 0.92);
+      --gold-primary: #f5c35b;
+      --gold-bright: #ffe89e;
+      --gold-deep: #b87b1c;
+      --gold-grad: linear-gradient(135deg, #fff2be 0%, #f5c35b 45%, #b87b1c 80%, #ffd978 100%);
+      --gold-text-grad: linear-gradient(135deg, #fff7dc 0%, #ffd978 50%, #e6a836 100%);
+      --kesari: #ff6b1a;
+      --kesari-glow: rgba(255, 107, 26, 0.35);
+      --vermillion: #c92424;
+      --kumkum: #881414;
+      --chandan: #fff9ee;
+      --text-muted: #d4bc9e;
+      --text-dim: #9e8770;
+      --border-gold: rgba(245, 195, 91, 0.28);
+      --border-gold-glow: rgba(245, 195, 91, 0.65);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --radius-full: 9999px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,28 +40,69 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Source Sans 3", sans-serif;
-      color: var(--ink);
-      background: var(--cream);
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(ellipse 90% 50% at 50% 0%, #2f1709 0%, transparent 70%),
+        radial-gradient(circle 800px at 15% 30%, rgba(201, 36, 36, 0.12) 0%, transparent 60%),
+        radial-gradient(circle 800px at 85% 70%, rgba(245, 195, 91, 0.08) 0%, transparent 60%);
+      background-attachment: fixed;
+      color: var(--chandan);
       line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    img { max-width: 100%; display: block; }
-
-    a { color: var(--saffron); text-decoration: none; }
+    /* Ambient Background Canvas */
+    #aura-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.65;
+    }
 
     .wrap {
-      width: min(1120px, calc(100% - 2rem));
+      width: min(1200px, calc(100% - 2.5rem));
       margin-inline: auto;
+      position: relative;
+      z-index: 2;
     }
 
+    /* Decorative Gold Lines */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+      opacity: 0.85;
+    }
+    .gold-divider::before, .gold-divider::after {
+      content: "";
+      height: 1px;
+      width: 120px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+    .gold-divider span {
+      font-size: 1.25rem;
+      color: var(--gold-primary);
+      text-shadow: 0 0 10px rgba(245, 195, 91, 0.6);
+    }
+
+    /* Header & Navigation */
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(250, 244, 232, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(196, 92, 26, 0.18);
+      z-index: 100;
+      background: rgba(14, 9, 6, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-gold);
+      transition: all 0.3s ease;
     }
 
     .nav {
@@ -59,343 +115,1682 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-family: "Noto Sans Devanagari", sans-serif;
-      font-weight: 700;
-      font-size: 1.35rem;
-      color: var(--maroon);
+      gap: 0.9rem;
+      text-decoration: none;
     }
 
-    .brand img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1.5px solid var(--gold);
+    .brand-logo-frame {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      padding: 2px;
+      background: var(--gold-grad);
+      box-shadow: 0 0 15px rgba(245, 195, 91, 0.4);
+    }
+
+    .brand-logo-frame img {
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius-full);
       object-fit: cover;
     }
 
-    .yatra {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--saffron);
-      border: 1px solid var(--saffron);
-      padding: 0.4rem 0.95rem;
-      border-radius: 2rem;
-      transition: all 0.2s ease;
+    .brand-title {
+      font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+      font-size: 1.5rem;
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.04em;
     }
 
-    .yatra:hover {
-      background: var(--saffron);
-      color: #fff;
+    .brand-sub {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-pooja {
+      background: linear-gradient(135deg, rgba(255, 107, 26, 0.22), rgba(201, 36, 36, 0.32));
+      border: 1px solid rgba(255, 107, 26, 0.5);
+      color: var(--chandan);
+      padding: 0.5rem 1.15rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-decoration: none;
+    }
+
+    .btn-pooja:hover {
+      background: linear-gradient(135deg, var(--kesari), var(--vermillion));
+      box-shadow: 0 0 20px var(--kesari-glow);
+      transform: translateY(-2px);
+      border-color: var(--gold-bright);
+    }
+
+    .bell-icon {
+      font-size: 1.15rem;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .bell-ringing {
+      animation: ringBell 0.6s ease-in-out infinite;
+    }
+
+    @keyframes ringBell {
+      0%, 100% { transform: rotate(0); }
+      20% { transform: rotate(18deg); }
+      40% { transform: rotate(-16deg); }
+      60% { transform: rotate(12deg); }
+      80% { transform: rotate(-8deg); }
+    }
+
+    /* Hero Section */
     .hero {
+      padding: 4.5rem 0 3.5rem;
       display: grid;
       grid-template-columns: 1.25fr 0.95fr;
       align-items: center;
-      gap: 3rem;
-      padding: 4.5rem 0 3rem;
+      gap: 3.5rem;
     }
 
-    .kicker {
-      font-family: "Noto Sans Devanagari", sans-serif;
-      font-size: 1.1rem;
+    .shubha-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(245, 195, 91, 0.12);
+      border: 1px solid var(--border-gold);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 0.9rem;
+      color: var(--gold-bright);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 20px rgba(245, 195, 91, 0.15);
+    }
+
+    .hero h1 {
+      font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+      font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+      line-height: 1.18;
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 2px 14px rgba(245, 195, 91, 0.25));
+    }
+
+    .hero-subtitle {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.35rem;
+      color: var(--kesari);
       font-weight: 600;
-      color: var(--saffron);
-      margin-bottom: 0.6rem;
-      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
 
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.3rem, 4.5vw, 3.4rem);
-      line-height: 1.15;
-      color: var(--maroon);
-      margin-bottom: 1.1rem;
-    }
-
-    .hero p {
+    .hero-desc {
       font-size: 1.12rem;
-      color: var(--muted);
-      line-height: 1.7;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
     }
 
-    .hero-art {
+    /* Quick Auspicious Stats & Actions */
+    .hero-pujas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .puja-pill {
+      background: rgba(35, 22, 16, 0.7);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 0.6rem 1.25rem;
+      font-size: 0.92rem;
+      color: var(--chandan);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .puja-pill:hover {
+      background: rgba(245, 195, 91, 0.2);
+      border-color: var(--gold-bright);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(245, 195, 91, 0.25);
+    }
+
+    /* Sanctum Diya & Emblem Showcase */
+    .hero-sanctum {
       position: relative;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 16px 36px rgba(107, 29, 29, 0.18);
-      border: 2px solid rgba(212, 160, 23, 0.35);
-      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .hero-art img {
+    .sanctum-glow {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 140, 26, 0.35) 0%, rgba(245, 195, 91, 0.18) 40%, transparent 70%);
+      filter: blur(35px);
+      animation: pulseGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      100% { transform: scale(1.08); opacity: 1; }
+    }
+
+    .sanctum-frame {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1/1;
+      border-radius: var(--radius-lg);
+      padding: 6px;
+      background: var(--gold-grad);
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.7),
+        0 0 35px rgba(245, 195, 91, 0.35),
+        inset 0 0 25px rgba(255, 230, 150, 0.4);
+    }
+
+    .sanctum-frame img {
       width: 100%;
       height: 100%;
+      border-radius: calc(var(--radius-lg) - 4px);
       object-fit: cover;
-      transition: transform 0.4s ease;
+      display: block;
+      transition: transform 0.5s ease;
     }
 
-    .hero-art:hover img {
+    .sanctum-frame:hover img {
       transform: scale(1.03);
     }
 
-    .order {
-      background: rgba(196, 92, 26, 0.08);
-      border-left: 4px solid var(--saffron);
-      border-radius: 0.5rem;
-      padding: 1.1rem 1.4rem;
-      margin: 1.5rem auto 3.5rem;
-      font-size: 0.98rem;
-      font-weight: 500;
-      color: var(--maroon);
+    .diya-badge {
+      position: absolute;
+      bottom: -15px;
+      background: linear-gradient(135deg, #24130b, #381a0b);
+      border: 1.5px solid var(--gold-primary);
+      border-radius: var(--radius-full);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.95rem;
+      font-family: 'Noto Serif Devanagari', serif;
+      color: var(--gold-bright);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(245, 195, 91, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
     }
 
-    h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.3rem;
-      color: var(--maroon);
-      margin-bottom: 1.5rem;
+    .diya-badge:hover {
+      transform: scale(1.05);
+      border-color: #fff;
+    }
+
+    /* Live Daily Divine Blessing Card */
+    .blessing-section {
+      margin: 1rem auto 4rem;
+    }
+
+    .blessing-card {
+      background: linear-gradient(135deg, rgba(38, 22, 15, 0.88), rgba(20, 12, 8, 0.95));
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(245, 195, 91, 0.04);
+      backdrop-filter: blur(12px);
+    }
+
+    .blessing-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold-grad);
+    }
+
+    .blessing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .blessing-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 0.95rem;
+      color: var(--gold-bright);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .blessing-refresh {
+      background: transparent;
+      border: 1px solid rgba(245, 195, 91, 0.4);
+      color: var(--text-muted);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.25s;
+    }
+
+    .blessing-refresh:hover {
+      color: var(--gold-bright);
+      border-color: var(--gold-bright);
+      background: rgba(245, 195, 91, 0.1);
+    }
+
+    .blessing-shloka {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.45rem;
+      color: var(--chandan);
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
+      text-shadow: 0 0 15px rgba(255, 249, 238, 0.2);
+    }
+
+    .blessing-meaning {
+      font-size: 1.05rem;
+      color: var(--gold-bright);
+      line-height: 1.65;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .blessing-quote {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Pilgrimage Tracker Banner */
+    .yatra-banner {
+      background: radial-gradient(circle at center, rgba(46, 26, 17, 0.9), rgba(18, 11, 7, 0.95));
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .yatra-info h3 {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.15rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.25rem;
+    }
+
+    .yatra-info p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .darshan-counter-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .darshan-progress-bar {
+      width: 140px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      border: 1px solid rgba(245, 195, 91, 0.3);
+    }
+
+    .darshan-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold-grad);
+      transition: width 0.4s ease;
+      box-shadow: 0 0 8px var(--gold-bright);
+    }
+
+    .darshan-status-text {
+      font-weight: 700;
+      color: var(--gold-bright);
+      font-size: 0.95rem;
+    }
+
+    /* Temples Grid */
+    .temples-header {
       text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .temples-header h2 {
+      font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .temples-header p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.75rem;
-      padding-bottom: 4.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 2rem;
+      padding-bottom: 5rem;
     }
 
-    article {
-      background: var(--paper);
-      border-radius: 1.1rem;
+    /* Sacred Temple Card */
+    .temple-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-gold);
       overflow: hidden;
-      box-shadow: 0 10px 28px rgba(44, 24, 16, 0.08);
-      border: 1px solid rgba(196, 92, 26, 0.14);
       display: flex;
       flex-direction: column;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    article:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 34px rgba(44, 24, 16, 0.14);
-    }
-
-    article .photo {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: #f2e6d6;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
       position: relative;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
     }
 
-    article img {
+    .temple-card:hover {
+      transform: translateY(-8px);
+      background: var(--bg-card-hover);
+      border-color: var(--gold-bright);
+      box-shadow: 
+        0 20px 45px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(245, 195, 91, 0.25);
+    }
+
+    .card-photo-box {
+      aspect-ratio: 3 / 4;
+      position: relative;
+      overflow: hidden;
+      background: #1a110a;
+    }
+
+    .card-photo-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 25%;
-      transition: transform 0.35s ease;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    article:hover img {
-      transform: scale(1.04);
+    .temple-card:hover .card-photo-box img {
+      transform: scale(1.06);
     }
 
-    article .body {
-      padding: 1.25rem 1.35rem 1.45rem;
+    .card-order-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(14, 9, 6, 0.85);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-bright);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .card-darshan-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(201, 36, 36, 0.88);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(6px);
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .card-darshan-badge.active {
+      display: block;
+      background: linear-gradient(135deg, #1f7a37, #2fb353);
+      border: 1px solid #7be89b;
+    }
+
+    .card-body {
+      padding: 1.4rem 1.4rem 1.6rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      position: relative;
     }
 
-    .num {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--saffron);
+    .card-title {
+      font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+      font-size: 1.42rem;
+      color: var(--gold-bright);
       margin-bottom: 0.25rem;
+      line-height: 1.3;
     }
 
-    h3 {
-      font-family: "Noto Sans Devanagari", sans-serif;
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--maroon);
-      line-height: 1.25;
-    }
-
-    .place {
-      color: var(--saffron);
+    .card-location {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--kesari);
+      font-size: 0.88rem;
       font-weight: 600;
-      font-size: 0.92rem;
-      margin: 0.25rem 0 0.65rem;
+      margin-bottom: 0.85rem;
     }
 
-    article p {
-      color: var(--muted);
-      font-size: 0.98rem;
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-action-btn {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(245, 195, 91, 0.15), rgba(255, 107, 26, 0.22));
+      border: 1px solid var(--border-gold);
+      color: var(--gold-bright);
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+      font-family: 'Noto Serif Devanagari', serif;
+    }
+
+    .card-action-btn:hover {
+      background: var(--gold-grad);
+      color: #140d09;
+      border-color: #fff;
+      box-shadow: 0 0 20px rgba(245, 195, 91, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Wish Box / Sankalpa Section */
+    .sankalpa-section {
+      background: radial-gradient(ellipse at 50% 0%, rgba(55, 30, 18, 0.95), rgba(18, 11, 7, 0.98));
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      margin-bottom: 5rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .sankalpa-section h2 {
+      font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+      font-size: 2.2rem;
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .sankalpa-section p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin: 0 auto 2rem;
+    }
+
+    .wish-input-wrap {
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .wish-input {
+      flex-grow: 1;
+      background: rgba(14, 9, 6, 0.75);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 0.85rem 1.4rem;
+      color: var(--chandan);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .wish-input:focus {
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 20px rgba(245, 195, 91, 0.3);
+      background: rgba(14, 9, 6, 0.95);
+    }
+
+    .wish-submit-btn {
+      background: linear-gradient(135deg, var(--kesari), var(--gold-deep));
+      border: none;
+      color: #fff;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Noto Serif Devanagari', serif;
+      box-shadow: 0 6px 18px rgba(255, 107, 26, 0.35);
+      white-space: nowrap;
+    }
+
+    .wish-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 107, 26, 0.55);
+      filter: brightness(1.1);
+    }
+
+    .active-wishes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .wish-card-chip {
+      background: rgba(36, 21, 14, 0.85);
+      border: 1px solid rgba(245, 195, 91, 0.4);
+      border-radius: var(--radius-full);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Modal for Detailed Darshan */
+    .darshan-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .darshan-modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .darshan-modal {
+      background: linear-gradient(135deg, #22140d, #140b07);
+      border: 1.5px solid var(--gold-primary);
+      border-radius: var(--radius-lg);
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 195, 91, 0.35);
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      animation: modalScale 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes modalScale {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-gold);
+      color: var(--chandan);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--vermillion);
+      border-color: #fff;
+    }
+
+    .modal-photo {
+      height: 100%;
+      min-height: 380px;
+      position: relative;
+      background: #000;
+    }
+
+    .modal-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .modal-content {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--kesari);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-title {
+      font-family: 'Rozha One', 'Noto Serif Devanagari', serif;
+      font-size: 2rem;
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-location {
+      color: var(--gold-bright);
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .modal-mantra {
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid var(--gold-primary);
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.05rem;
+      color: var(--gold-bright);
+      margin-bottom: 1.4rem;
       line-height: 1.6;
     }
 
-    footer {
-      background: var(--maroon);
-      color: #f6e7d3;
-      padding: 2.5rem 0;
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    footer p {
-      opacity: 0.92;
+    .modal-story {
+      color: var(--text-muted);
       font-size: 0.98rem;
-      font-family: "Noto Sans Devanagari", sans-serif;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+      flex-grow: 1;
     }
 
-    @media (max-width: 820px) {
-      .hero, .grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 2rem; gap: 2rem; }
-      .hero-art { max-width: 400px; margin-inline: auto; }
+    .modal-actions {
+      display: flex;
+      gap: 0.85rem;
+    }
+
+    .modal-bless-btn {
+      flex-grow: 1;
+      background: linear-gradient(135deg, var(--kesari), var(--gold-deep));
+      border: none;
+      color: #fff;
+      padding: 0.85rem 1.2rem;
+      border-radius: var(--radius-md);
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s;
+    }
+
+    .modal-bless-btn:hover {
+      filter: brightness(1.15);
+      box-shadow: 0 0 25px rgba(255, 107, 26, 0.5);
+    }
+
+    /* Flower Petals (Pushpavrushti) Canvas */
+    #flower-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Toast Notification */
+    .toast-blessing {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, #30170a, #1a0d06);
+      border: 1.5px solid var(--gold-primary);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-full);
+      color: var(--gold-bright);
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.05rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 195, 91, 0.4);
+      z-index: 10000;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      pointer-events: none;
+      text-align: center;
+    }
+
+    .toast-blessing.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #080504;
+      border-top: 1px solid var(--border-gold);
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-shloka {
+      font-family: 'Noto Serif Devanagari', serif;
+      font-size: 1.25rem;
+      color: var(--gold-bright);
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .footer-desc {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      max-width: 550px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .footer-copy {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; padding-top: 2rem; }
+      .hero-pujas { justify-content: center; }
+      .hero-sanctum { margin-top: 1rem; }
+      .darshan-modal { grid-template-columns: 1fr; }
+      .modal-photo { min-height: 250px; height: 260px; }
+      .yatra-banner { flex-direction: column; text-align: center; }
+      .wish-input-wrap { flex-direction: column; }
     }
   </style>
 </head>
 <body>
+  <!-- Ambient Sparkles & Petal Canvases -->
+  <canvas id="aura-canvas"></canvas>
+  <canvas id="flower-canvas"></canvas>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-blessing">
+    <span style="font-size:1.4rem;">🪔</span>
+    <span id="toast-text">श्री गणेश आपल्या सर्व मनोकामना पूर्ण करोत!</span>
+  </div>
+
+  <!-- Header -->
   <header>
     <div class="wrap nav">
       <a class="brand" href="#top">
-        <img src="images/ashtavinayak-om.jpg" alt="Ashtavinayak Om emblem" />
-        <span>अष्टविनायक</span>
+        <div class="brand-logo-frame">
+          <img src="images/ashtavinayak-om.jpg" alt="Ashtavinayak Om emblem" />
+        </div>
+        <div>
+          <span class="brand-title">श्री अष्टविनायक</span>
+          <span class="brand-sub">Sacred Darshan & Blessings</span>
+        </div>
       </a>
-      <a class="yatra" href="#temples">Eight Temples</a>
+
+      <div class="header-actions">
+        <button class="btn-pooja" id="bell-btn" title="घंटा नाद करा (Ring Temple Bell)">
+          <span class="bell-icon" id="bell-icon">🔔</span>
+          <span>घंटा नाद</span>
+        </button>
+        <button class="btn-pooja" id="flower-btn" title="पुष्पवृष्टी करा (Offer Flowers)">
+          <span>🌸</span>
+          <span>पुष्प अर्पण</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="top">
+    <!-- Hero Section -->
     <section class="wrap hero">
       <div>
-        <p class="kicker">॥ श्री गणेशाय नमः ॥ अष्टविनायक यात्रा</p>
-        <h1>Eight Sacred Forms of Lord Ganesha</h1>
-        <p>
-          The Ashtavinayak Yatra is a revered pilgrimage to eight swayambhu (self-manifested)
-          Ganesha temples in Maharashtra. Each murti has its own unique form,
-          legend, posture, and blessing. The sacred pilgrimage traditionally begins and ends at Morgaon.
+        <div class="shubha-badge">
+          <span>॥ श्री गणेशाय नमः ॥</span>
+          <span>•</span>
+          <span>सर्व कार्य सिद्धी</span>
+        </div>
+        <h1>मंगलमूर्ती मोरया</h1>
+        <p class="hero-subtitle">आठ स्वयंभू गणपती, आठ अद्वितीय आशिर्वाद</p>
+        <p class="hero-desc">
+          आपल्या दिवसाची सुरुवात करा पवित्र अष्टविनायक दर्शनाने. मन शांत, विचार पवित्र आणि सर्व कामांमध्ये यश प्राप्त होवो अशी मंगल कामना. श्रद्धेने दर्शन घ्या आणि सकारात्मक ऊर्जेचा अनुभव घ्या.
         </p>
+
+        <div class="hero-pujas">
+          <button class="puja-pill" id="hero-darshan-btn" onclick="document.getElementById('temples').scrollIntoView({behavior: 'smooth'})">
+            <span>🙏</span>
+            <span>आजचे दर्शन सुरू करा</span>
+          </button>
+          <button class="puja-pill" id="hero-diya-btn" onclick="triggerPooja('diya')">
+            <span>🪔</span>
+            <span>दीप प्रज्वलन करा</span>
+          </button>
+          <button class="puja-pill" id="hero-sankalpa-btn" onclick="document.getElementById('sankalpa').scrollIntoView({behavior: 'smooth'})">
+            <span>✨</span>
+            <span>मनोकामना संकल्प</span>
+          </button>
+        </div>
       </div>
-      <div class="hero-art">
-        <img src="images/ashtavinayak-om.jpg" alt="Ashtavinayak Om with eight Ganesha forms" />
+
+      <div class="hero-sanctum">
+        <div class="sanctum-glow"></div>
+        <div class="sanctum-frame">
+          <img src="images/ashtavinayak-om.jpg" alt="Ashtavinayak Divine Om Mandala" />
+          <div class="diya-badge" onclick="triggerPooja('diya')">
+            <span id="diya-flame" style="font-size:1.3rem;">🪔</span>
+            <span id="diya-label">दीप प्रज्वलित आहे</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <p class="wrap order">
-      Traditional order: Morgaon → Siddhatek → Pali → Mahad → Theur → Lenyadri → Ozar → Ranjangaon → return to Morgaon.
-    </p>
+    <!-- Live Daily Divine Blessing Card -->
+    <section class="wrap blessing-section">
+      <div class="blessing-card">
+        <div class="blessing-header">
+          <div class="blessing-tag">
+            <span>🌅</span>
+            <span>आजचा दिव्य आशिर्वाद व मंगल विचार</span>
+          </div>
+          <button class="blessing-refresh" id="refresh-blessing-btn">
+            <span>🔄</span>
+            <span>नवीन आशिर्वाद</span>
+          </button>
+        </div>
+        <div class="blessing-shloka" id="shloka-text">
+          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+        </div>
+        <div class="blessing-meaning" id="shloka-meaning">
+          "हे वक्रतुंड, विशाल काय आणि करोडो सूर्यांचे तेज असणाऱ्या श्री गणराया! माझ्या सर्व शुभ कार्यांमधील अडथळे दूर करून मला सिद्धी प्रदान कर."
+        </div>
+        <div class="blessing-quote" id="shloka-quote">
+          आजचा दिवस तुमच्यासाठी आनंद, आरोग्य आणि आत्मिक शांती घेऊन येवो. तुमचे सर्व संकल्प सिद्धीस जावोत!
+        </div>
+      </div>
+    </section>
 
+    <!-- Pilgrimage Progress & Order -->
+    <section class="wrap">
+      <div class="yatra-banner">
+        <div class="yatra-info">
+          <h3>अष्टविनायक तीर्थयात्रा क्रम (Sacred Pilgrimage Order)</h3>
+          <p>मोरगाव ➔ सिद्धटेक ➔ पाली ➔ महड ➔ थेऊर ➔ लेण्याद्री ➔ ओझर ➔ रांजणगाव (पुन्हा मोरगाव समाप्ती)</p>
+        </div>
+        <div class="darshan-counter-box">
+          <div class="darshan-progress-bar">
+            <div class="darshan-progress-fill" id="darshan-progress"></div>
+          </div>
+          <div class="darshan-status-text" id="darshan-status">० / ८ दर्शन</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Eight Vinayakas Grid -->
     <section class="wrap" id="temples">
-      <h2>The Eight Sacred Vinayakas</h2>
+      <div class="temples-header">
+        <h2>पवित्र अष्टविनायक स्वरूप</h2>
+        <p>प्रत्येक मूर्ती स्वयंभू असून प्रत्येकाचे वेगळे महात्म्य आणि फलश्रुती आहे. संपूर्ण भक्तिभावाने दर्शन घ्या.</p>
+      </div>
+
       <div class="grid">
-        <article>
-          <div class="photo">
-            <img src="images/01-mayureshwar.jpg" alt="Mayureshwar Ganesha murti, Morgaon" />
+        <!-- 1. Mayureshwar -->
+        <article class="temple-card" data-id="1">
+          <div class="card-photo-box">
+            <img src="images/01-mayureshwar.jpg" alt="श्री मयूरेश्वर - मोरगाव" loading="lazy" />
+            <span class="card-order-badge">१ ला गणपती • प्रथम दर्शन</span>
+            <span class="card-darshan-badge" id="badge-1">दर्शन झाले ✓</span>
           </div>
-          <div class="body">
-            <span class="num">01 • MAYURESHWAR</span>
-            <h3>श्री मयूरेश्वर</h3>
-            <p class="place">Morgaon, Pune district</p>
-            <p>First and last stop of the yatra. Ganesha here rides a peacock and is believed to have slain the demon Sindhu. The black-stone shrine is guarded by a Nandi at the gate.</p>
-          </div>
-        </article>
-
-        <article>
-          <div class="photo">
-            <img src="images/02-siddhivinayak.jpg" alt="Siddhivinayak Ganesha murti, Siddhatek" />
-          </div>
-          <div class="body">
-            <span class="num">02 • SIDDHIVINAYAK</span>
-            <h3>श्री सिद्धिविनायक</h3>
-            <p class="place">Siddhatek, Ahilyanagar district</p>
-            <p>The only Ashtavinayak murti with the trunk turned right (Dakshinavarti). Set on a hillock beside the Bhima River, this shrine is believed to grant siddhi — spiritual accomplishment.</p>
-          </div>
-        </article>
-
-        <article>
-          <div class="photo">
-            <img src="images/03-ballaleshwar.jpg" alt="Ballaleshwar Ganesha murti, Pali" />
-          </div>
-          <div class="body">
-            <span class="num">03 • BALLALESHWAR</span>
-            <h3>श्री बल्लाळेश्वर</h3>
-            <p class="place">Pali, Raigad district</p>
-            <p>The only Ganesha named after a devotee — the boy Ballal. The east-facing stone temple has eight carved pillars for the eight directions, and the sacred prasad here is besan ladoo.</p>
+          <div class="card-body">
+            <h3 class="card-title">श्री मयूरेश्वर</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>मोरगाव (पुणे)</span>
+            </div>
+            <p class="card-desc">
+              अष्टविनायक यात्रेची सुरुवात व शेवट येथे होतो. मोरावर आरूढ होऊन सिंधू दैत्याचा वध करणारे विघ्नहर्ता स्वरूप.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(1)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
           </div>
         </article>
 
-        <article>
-          <div class="photo">
-            <img src="images/04-varadavinayak.jpg" alt="Varadavinayak Ganesha murti, Mahad" />
+        <!-- 2. Siddhivinayak -->
+        <article class="temple-card" data-id="2">
+          <div class="card-photo-box">
+            <img src="images/02-siddhivinayak.jpg" alt="श्री सिद्धिविनायक - सिद्धटेक" loading="lazy" />
+            <span class="card-order-badge">२ रा गणपती</span>
+            <span class="card-darshan-badge" id="badge-2">दर्शन झाले ✓</span>
           </div>
-          <div class="body">
-            <span class="num">04 • VARADAVINAYAK</span>
-            <h3>श्री वरदविनायक</h3>
-            <p class="place">Mahad, Raigad district</p>
-            <p>Giver of boons and success. The weathered swayambhu idol was found in a nearby lake. An eternal oil lamp (Akhand Nandadeep) here is said to have burned without pause since 1892.</p>
-          </div>
-        </article>
-
-        <article>
-          <div class="photo">
-            <img src="images/05-chintamani.jpg" alt="Chintamani Ganesha murti, Theur" />
-          </div>
-          <div class="body">
-            <span class="num">05 • CHINTAMANI</span>
-            <h3>श्री चिंतामणी</h3>
-            <p class="place">Theur, Pune district</p>
-            <p>Named for the wish-fulfilling Chintamani jewel restored to sage Kapila. The nearest Ashtavinayak from Pune, located at the sacred confluence of the Mula, Mutha, and Bhima rivers.</p>
-          </div>
-        </article>
-
-        <article>
-          <div class="photo">
-            <img src="images/06-girijatmaj.jpg" alt="Girijatmaj Ganesha murti, Lenyadri" />
-          </div>
-          <div class="body">
-            <span class="num">06 • GIRIJATMAJ</span>
-            <h3>श्री गिरिजात्मज</h3>
-            <p class="place">Lenyadri, Pune district</p>
-            <p>Parvati’s son, carved directly into Cave 8 of the Lenyadri rock-cut hills. Reached by stone steps, the sanctum is illuminated only by natural daylight without electric lamps.</p>
+          <div class="card-body">
+            <h3 class="card-title">श्री सिद्धिविनायक</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>सिद्धटेक (अहमदनगर)</span>
+            </div>
+            <p class="card-desc">
+              उजव्या सोंडेचे अत्यंत जागृत दैवत. भगवान विष्णूंनी मधु-कैटभावर विजयासाठी येथे सिद्धी प्राप्त केली होती.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(2)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
           </div>
         </article>
 
-        <article>
-          <div class="photo">
-            <img src="images/07-vighneshwar.jpg" alt="Vighneshwar Ganesha murti, Ozar" />
+        <!-- 3. Ballaleshwar -->
+        <article class="temple-card" data-id="3">
+          <div class="card-photo-box">
+            <img src="images/03-ballaleshwar.jpg" alt="श्री बल्लाळेश्वर - पाली" loading="lazy" />
+            <span class="card-order-badge">३ रा गणपती</span>
+            <span class="card-darshan-badge" id="badge-3">दर्शन झाले ✓</span>
           </div>
-          <div class="body">
-            <span class="num">07 • VIGHNESHWAR</span>
-            <h3>श्री विघ्नेश्वर</h3>
-            <p class="place">Ozar, Pune district</p>
-            <p>Remover of obstacles. After vanquishing the demon Vighnasura, Ganesha took this name. The shrine stands on the Kukadi River behind high stone ramparts with a golden pinnacle.</p>
+          <div class="card-body">
+            <h3 class="card-title">श्री बल्लाळेश्वर</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>पाली (रायगड)</span>
+            </div>
+            <p class="card-desc">
+              एकमेव विनायक जे भक्ताच्या (बल्लाळ) नावाने ओळखले जातात. भक्तांच्या हाकेला तात्काळ धावून येणारे दयाळू स्वरूप.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(3)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
           </div>
         </article>
 
-        <article>
-          <div class="photo">
-            <img src="images/08-mahaganapati.jpg" alt="Mahaganapati Ganesha murti, Ranjangaon" />
+        <!-- 4. Varadavinayak -->
+        <article class="temple-card" data-id="4">
+          <div class="card-photo-box">
+            <img src="images/04-varadavinayak.jpg" alt="श्री वरदविनायक - महड" loading="lazy" />
+            <span class="card-order-badge">४ था गणपती</span>
+            <span class="card-darshan-badge" id="badge-4">दर्शन झाले ✓</span>
           </div>
-          <div class="body">
-            <span class="num">08 • MAHAGANAPATI</span>
-            <h3>श्री महागणपती</h3>
-            <p class="place">Ranjangaon, Pune district</p>
-            <p>The most powerful form, worshipped by Shiva before the battle with Tripurasura. The east-facing Peshwa-era temple is aligned so that the morning sun’s rays fall upon the deity.</p>
+          <div class="card-body">
+            <h3 class="card-title">श्री वरदविनायक</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>महड (रायगड)</span>
+            </div>
+            <p class="card-desc">
+              सर्व मनोकामना व वरदान देणारे वरदविनायक. गर्भगृहात १८९२ पासून अखंड तेवणारा नंदादीप हे विशेष वैशिष्ट्य आहे.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(4)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
           </div>
         </article>
+
+        <!-- 5. Chintamani -->
+        <article class="temple-card" data-id="5">
+          <div class="card-photo-box">
+            <img src="images/05-chintamani.jpg" alt="श्री चिंतामणी - थेऊर" loading="lazy" />
+            <span class="card-order-badge">५ वा गणपती</span>
+            <span class="card-darshan-badge" id="badge-5">दर्शन झाले ✓</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">श्री चिंतामणी</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>थेऊर (पुणे)</span>
+            </div>
+            <p class="card-desc">
+              मनातील सर्व चिंता, भय आणि विवंचना हरण करणारे कृपाळू स्वरूप. मूलमंत्र जपाने मानसिक शांतता लाभते.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(5)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 6. Girijatmaj -->
+        <article class="temple-card" data-id="6">
+          <div class="card-photo-box">
+            <img src="images/06-girijatmaj.jpg" alt="श्री गिरिजात्मज - लेण्याद्री" loading="lazy" />
+            <span class="card-order-badge">६ वा गणपती</span>
+            <span class="card-darshan-badge" id="badge-6">दर्शन झाले ✓</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">श्री गिरिजात्मज</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>लेण्याद्री (पुणे)</span>
+            </div>
+            <p class="card-desc">
+              पर्वतातील बौद्ध लेणीमध्ये विराजमान असणारे एकमेव विनायक. माता गिरिजेच्या (पार्वती) तपश्चर्येने प्रकटलेले बालक स्वरूप.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(6)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 7. Vighneshwar -->
+        <article class="temple-card" data-id="7">
+          <div class="card-photo-box">
+            <img src="images/07-vighneshwar.jpg" alt="श्री विघ्नेश्वर - ओझर" loading="lazy" />
+            <span class="card-order-badge">७ वा गणपती</span>
+            <span class="card-darshan-badge" id="badge-7">दर्शन झाले ✓</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">श्री विघ्नेश्वर</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>ओझर (पुणे)</span>
+            </div>
+            <p class="card-desc">
+              विघ्नासुराचा गर्व हरण करून भक्तांचे सर्व संकटांपासून रक्षण करणारे स्वरूप. मंदिरावर सुवर्णशिखर आणि अप्रतिम नक्षीकाम आहे.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(7)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- 8. Mahaganapati -->
+        <article class="temple-card" data-id="8">
+          <div class="card-photo-box">
+            <img src="images/08-mahaganapati.jpg" alt="श्री महागणपती - रांजणगाव" loading="lazy" />
+            <span class="card-order-badge">८ वा गणपती</span>
+            <span class="card-darshan-badge" id="badge-8">दर्शन झाले ✓</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">श्री महागणपती</h3>
+            <div class="card-location">
+              <span>📍</span>
+              <span>रांजणगाव (पुणे)</span>
+            </div>
+            <p class="card-desc">
+              भगवान शंकरांनी त्रिपुरासुराचा वध करण्यापूर्वी ज्यांची आराधना केली ते अत्यंत पराक्रमी व सामर्थ्यवान महागणपती स्वरूप.
+            </p>
+            <button class="card-action-btn" onclick="openDarshanModal(8)">
+              <span>🙏</span>
+              <span>दर्शन व प्रार्थना करा</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sacred Wish Box / Sankalpa -->
+    <section class="wrap sankalpa-section" id="sankalpa">
+      <div style="font-size:2.5rem; margin-bottom: 0.5rem;">🪔</div>
+      <h2>मनोकामना संकल्प पेटी</h2>
+      <p>
+        तुमच्या मनातील कोणतीही सदिच्छा, प्रार्थना किंवा आजच्या दिवसाचा संकल्प येथे श्रद्धापूर्वक अर्पण करा. श्री गणेश तुमच्या संकल्पास सिद्धी प्रदान करोत.
+      </p>
+
+      <div class="wish-input-wrap">
+        <input type="text" id="wish-input" class="wish-input" placeholder="तुमची मनोकामना / संकल्प येथे लिहा (उदा. आरोग्य, कार्यसिद्धी, मनःशांती)..." />
+        <button class="wish-submit-btn" id="wish-submit-btn" onclick="submitWish()">
+          <span>अर्पण करा</span>
+          <span>✨</span>
+        </button>
+      </div>
+
+      <div class="active-wishes" id="active-wishes">
+        <!-- Dynamic active wish chips -->
       </div>
     </section>
   </main>
 
+  <!-- Detailed Darshan Modal -->
+  <div class="darshan-modal-overlay" id="darshan-modal-overlay" onclick="closeDarshanModal(event)">
+    <div class="darshan-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeDarshanModal()">✕</button>
+      <div class="modal-photo">
+        <img id="modal-img" src="" alt="Darshan" />
+      </div>
+      <div class="modal-content">
+        <div class="modal-num" id="modal-num">१ ला गणपती</div>
+        <h2 class="modal-title" id="modal-title">श्री मयूरेश्वर</h2>
+        <div class="modal-location" id="modal-location">मोरगाव, पुणे</div>
+        <div class="modal-mantra" id="modal-mantra">
+          ॐ गं गणपतये नमः।
+        </div>
+        <p class="modal-story" id="modal-story">
+          कथा व महात्म्य येथे प्रदर्शित होईल.
+        </p>
+        <div class="modal-actions">
+          <button class="modal-bless-btn" id="modal-pranam-btn" onclick="recordDarshan()">
+            <span>🌸</span>
+            <span>प्रणाम करा व दर्शन नोंदवा</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <div class="wrap">
-      <p>अष्टविनायक • Eight Swayambhu Vinayakas of Maharashtra</p>
+      <div class="footer-shloka">
+        ॥ ॐ श्रीमन्महागणाधिपतये नमः ॥<br>
+        सर्व मंगल मांगल्ये शिवे सर्वार्थ साधिके। शरण्ये त्र्यंबके गौरी नारायणि नमोऽस्तु ते॥
+      </div>
+      <p class="footer-desc">
+        अष्टविनायक दर्शनाने आपले चित्त शांत, दिवस मंगलमय आणि सर्व कार्ये निर्विघ्नपणे सिद्धीस जावोत.
+      </p>
+      <div class="gold-divider"><span>ॐ</span></div>
+      <p class="footer-copy">
+        © 2026 श्री अष्टविनायक यात्रा • सदैव प्रसन्न राहा • सुखकर्ता दुःखहर्ता
+      </p>
     </div>
   </footer>
+
+  <script>
+    /* Data for the 8 Deities */
+    const DEITIES = {
+      1: {
+        num: "१ ला गणपती • यात्रेची सुरुवात",
+        name: "श्री मयूरेश्वर",
+        loc: "मोरगाव, पुणे (कर्‍हा नदी काठ)",
+        img: "images/01-mayureshwar.jpg",
+        mantra: "ॐ मयूरेशाय नमः। सिंधू दैत्य विनाशकाय सर्वकार्य सिद्धिदायकाय नमः॥",
+        story: "अष्टविनायक यात्रेची सुरुवात मोरगावपासून होते आणि आठही गणपतींचे दर्शन घेऊन पुन्हा येथे येऊन सांगता होते. येथे गणराया मयूरावर (मोरावर) आरूढ झाले होते. हे गणेश भक्तांचे आद्य तीर्थक्षेत्र मानले जाते. येथील दर्शनाने सर्व पापांचे क्षालन होऊन आयुष्यात नवीन उत्साहाची निर्मिती होते."
+      },
+      2: {
+        num: "२ रा गणपती • सिद्धी प्रदाता",
+        name: "श्री सिद्धिविनायक",
+        loc: "सिद्धटेक, कर्जत, अहमदनगर (भीमा नदी काठ)",
+        img: "images/02-siddhivinayak.jpg",
+        mantra: "ॐ सिद्धिविनायकाय नमः। सर्व विघ्न प्रशमनाय सर्व सिद्धि प्रदायकाय नमः॥",
+        story: "सिद्धटेकचा सिद्धिविनायक हा अष्टविनायकांमधील एकमेव उजव्या सोंडेचा गणपती आहे. मधु आणि कैटभ या दैत्यांशी युद्ध करताना भगवान विष्णूंनी येथे श्री गणेशाची आराधना करून सिद्धी प्राप्त केली. हे क्षेत्र कार्यसिद्धी आणि बुद्धीला प्रचंड तेज देणारे आहे."
+      },
+      3: {
+        num: "३ रा गणपती • भक्तवत्सल",
+        name: "श्री बल्लाळेश्वर",
+        loc: "पाली, सुधागड, रायगड (अंबा नदी काठ)",
+        img: "images/03-ballaleshwar.jpg",
+        mantra: "ॐ बल्लाळेश्वराय नमः। भक्त रक्षण तत्पराय महागणपतये नमः॥",
+        story: "बल्लाळ नावाच्या एका लहान बालभक्ताच्या अनन्य भक्तीवर प्रसन्न होऊन प्रत्यक्ष गणरायांनी त्याचे नाव आपल्या नामाच्या आधी स्वीकारले. जगातील हा एकमेव विनायक आहे जो भक्ताच्या नावाने ओळखला जातो. संकटात सापडलेल्या भक्तांना येथे अभय आणि विश्वास मिळतो."
+      },
+      4: {
+        num: "४ था गणपती • वरदान दाता",
+        name: "श्री वरदविनायक",
+        loc: "महड, खालापूर, रायगड",
+        img: "images/04-varadavinayak.jpg",
+        mantra: "ॐ वरदविनायकाय नमः। सर्व मनोरथ पूरकाय सर्व वरप्रदायकाय नमः॥",
+        story: "ऋषि गृत्समदाने येथे तपश्चर्या केली आणि श्री गणरायांनी त्यांना इच्छित वर प्रदान केला. येथे मंदिरात १८९२ पासून अखंड नंदादीप तेवत आहे. ज्यांना नवीन व्यवसाय, गृहसौख्य किंवा संतान प्राप्तीची इच्छा असते, ते येथे मनोभावे प्रार्थना करतात."
+      },
+      5: {
+        num: "५ वा गणपती • चिंता निवारक",
+        name: "श्री चिंतामणी",
+        loc: "थेऊर, हवेली, पुणे (मुळा-मुठा संगम)",
+        img: "images/05-chintamani.jpg",
+        mantra: "ॐ चिंतामणये नमः। चित्त समाधान कराय सर्व चिंता निवारणाय नमः॥",
+        story: "ऋषि कपिलांचे चिंतामणी रत्न गणेशाने गणासुराकडून परत मिळवून दिले, परंतु कपिलांनी ते रत्न गणरायाच्या गळ्यात अर्पण केले. म्हणून हे नाव चिंतामणी पडले. मानवी मनातील विवंचना, मानसिक ताणतणाव आणि चिंता या ठिकाणी दर्शनाने क्षणात नाहीशा होतात."
+      },
+      6: {
+        num: "६ वा गणपती • मातृवात्सल्य स्वरूप",
+        name: "श्री गिरिजात्मज",
+        loc: "लेण्याद्री, जुन्नर, पुणे (शिवनेरी जवळील डोंगर लेणी)",
+        img: "images/06-girijatmaj.jpg",
+        mantra: "ॐ गिरिजात्मजाय नमः। उमा सुताय विघ्नहर्त्रे नमः॥",
+        story: "माता गिरिजेने (पार्वतीने) पुत्रप्राप्तीसाठी लेण्याद्रीच्या पर्वतातील गुहेत १२ वर्षे घोर तपश्चर्या केली. भाद्रपद शुद्ध चतुर्थीला प्रत्यक्ष गणेश येथे बालक रूपात प्रकट झाले. ३०७ पायऱ्या चढून या लेण्यातील स्वयंभू गणेशाचे दर्शन घेतल्यास प्रचंड आत्मिक बळ लाभते."
+      },
+      7: {
+        num: "७ वा गणपती • विघ्नहर्ता",
+        name: "श्री विघ्नेश्वर",
+        loc: "ओझर, जुन्नर, पुणे (कुकडी नदी काठ)",
+        img: "images/07-vighneshwar.jpg",
+        mantra: "ॐ विघ्नेश्वराय नमः। विघ्नांतकाय वरदाय सुरप्रियाय नमः॥",
+        story: "विघ्नासुराचा पराभव करून संतांचे व ऋषिमुनींचे रक्षण श्री गणेशाने येथे केले. शरणागत आलेल्या विघ्नासुराने विनंती केली की माझ्या नावाआधी आपले नाव असावे. मंदिराच्या शिखरावर सोन्याचा मुलामा आहे. कोणत्याही नवीन कार्यातील विघ्ने दूर करण्यासाठी हे स्थान पूजनीय आहे."
+      },
+      8: {
+        num: "८ वा गणपती • परम सामर्थ्यवान",
+        name: "श्री महागणपती",
+        loc: "रांजणगाव, शिरूर, पुणे",
+        img: "images/08-mahaganapati.jpg",
+        mantra: "ॐ महागणपतये नमः। त्रिपुरासुर संहारकाय सर्व संकटनाशनाय नमः॥",
+        story: "त्रिपुरासुर नावाच्या अजेय राक्षसाचा वध करण्यासाठी साक्षात भगवान शिवाने ज्या स्वरूपाचे स्मरण करून बाण सोडला, ते हे महागणपती स्वरूप. अष्टविनायकांमधील अत्यंत शक्तिशाली व भव्य रूप मानले जाते. या दर्शनाने सर्व शत्रू व नकारात्मक ऊर्जा नष्ट पावते."
+      }
+    };
+
+    /* Auspicious Blessings Collection */
+    const BLESSINGS = [
+      {
+        shloka: "वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥",
+        meaning: "\"हे वक्रतुंड, विशाल काय आणि करोडो सूर्यांचे तेज असणाऱ्या श्री गणराया! माझ्या सर्व शुभ कार्यांमधील अडथळे दूर करून मला सिद्धी प्रदान कर.\"",
+        quote: "आजचा दिवस तुमच्यासाठी आनंद, आरोग्य आणि आत्मिक शांती घेऊन येवो. तुमचे सर्व संकल्प सिद्धीस जावोत!"
+      },
+      {
+        shloka: "प्रणम्य शिरसा देवं गौरीपुत्रं विनायकम्। भक्तावासं स्मरेन्नित्यमायुःकामार्थसिद्धये॥",
+        meaning: "\"माता पार्वतीचे सुपुत्र श्री विनायकास मस्तक टेकवून वंदन करतो. भक्तांच्या हृदयात वास करणाऱ्या बाप्पाचे स्मरण आयुष्य, आरोग्य आणि मनोकामना पूर्ण करते.\"",
+        quote: "सकाळच्या या प्रसन्न प्रहरी बाप्पाचे स्मरण तुमच्या मनाला नवीन ऊर्जा आणि निर्भयता प्रदान करेल."
+      },
+      {
+        shloka: "गजाननं भूतगणादिसेवितं कपित्थजम्बूफलचारुभक्षणम्। उमासुतं शोकविनाशकारकं नमामि विघ्नेश्वरपादपंकजम्॥",
+        meaning: "\"सर्व जीवसृष्टीने पूजलेल्या, उमापुत्र आणि दुःखाचा नाश करणाऱ्या विघ्नेश्वराच्या चरणकमळांना मी त्रिवार वंदन करतो.\"",
+        quote: "कठीण प्रसंगामध्ये संयम आणि शांतता टिकवून ठेवण्याचे आत्मिक सामर्थ्य तुम्हाला आज लाभो."
+      },
+      {
+        shloka: "एकदन्तं महाकायं तप्तकाञ्चनसन्निभम्। लम्बोदरं विशालाक्षं वन्देऽहं गणनायकम्॥",
+        meaning: "\"एकदंत, सुवर्णकांतीप्रमाणे दैदीप्यमान शरीर, लंबोदर आणि विशाल नेत्रांच्या या गणरायाला मी विनम्र वंदन करतो.\"",
+        quote: "आजच्या दिवसातील प्रत्येक प्रयत्न सफल होवो, आणि घरामध्ये मंगलमय वातावरणाचा वास राहो!"
+      },
+      {
+        shloka: "विघ्नेश्वराय वरदाय सुरप्रियाय लम्बोदराय सकलाय जगद्धिताय। नागाननाय श्रुतियज्ञविभूषिताय गौरीसुताय गणनाथ नमो नमस्ते॥",
+        meaning: "\"विघ्नांचा नाश करणाऱ्या, वरदान देणाऱ्या, जगताचे कल्याण करणाऱ्या हे गौरीपुत्र गणाधिपती, तुला माझे वारंवार नमन!\"",
+        quote: "बाप्पाच्या आशीर्वादाने तुमची सर्व कामे सहजतेने पूर्ण होवोत. तुमचा आजचा दिवस मंगलमय जावो!"
+      }
+    ];
+
+    let currentBlessingIndex = 0;
+    let completedDarshans = new Set(JSON.parse(localStorage.getItem('ashtavinayak_darshans') || '[]'));
+    let activeModalId = null;
+
+    /* Web Audio API Temple Bell Chime */
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function ringTempleBell() {
+      const bellIcon = document.getElementById('bell-icon');
+      bellIcon.classList.add('bell-ringing');
+      setTimeout(() => bellIcon.classList.remove('bell-ringing'), 800);
+
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const frequencies = [587.33, 880, 1174.66, 1760, 2349.32]; // D5, A5, D6, A6 bell harmonics
+        const gains = [0.45, 0.25, 0.15, 0.08, 0.04];
+
+        frequencies.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc.type = idx === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+
+          gain.gain.setValueAtTime(gains[idx], now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 2.9);
+        });
+      } catch (e) {
+        console.log("Audio not supported or blocked", e);
+      }
+
+      showToast("🔔 ॐ गं गणपतये नमः! पवित्र घंटा नाद संपन्न.");
+    }
+
+    /* Pushpavrushti Flower Petal Shower */
+    const flowerCanvas = document.getElementById('flower-canvas');
+    const fCtx = flowerCanvas.getContext('2d');
+    let petals = [];
+    let isPetalShowerActive = false;
+
+    function resizeCanvases() {
+      flowerCanvas.width = window.innerWidth;
+      flowerCanvas.height = window.innerHeight;
+      const auraCanvas = document.getElementById('aura-canvas');
+      auraCanvas.width = window.innerWidth;
+      auraCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvases);
+    resizeCanvases();
+
+    function triggerFlowerShower() {
+      const petalColors = ['#ff7a00', '#ffa834', '#ffd043', '#e62424', '#ff4d6d', '#fff0b3'];
+      for (let i = 0; i < 45; i++) {
+        petals.push({
+          x: Math.random() * flowerCanvas.width,
+          y: -20 - Math.random() * 80,
+          size: Math.random() * 9 + 7,
+          color: petalColors[Math.floor(Math.random() * petalColors.length)],
+          vx: (Math.random() - 0.5) * 2.2,
+          vy: Math.random() * 2.5 + 2.2,
+          angle: Math.random() * Math.PI * 2,
+          vAngle: (Math.random() - 0.5) * 0.08,
+          opacity: 1
+        });
+      }
+
+      if (!isPetalShowerActive) {
+        isPetalShowerActive = true;
+        animatePetals();
+      }
+
+      showToast("🌸 पुष्पवृष्टी अर्पण! बाप्पाचे आशिर्वाद सदैव पाठीशी आहेत.");
+    }
+
+    function animatePetals() {
+      fCtx.clearRect(0, 0, flowerCanvas.width, flowerCanvas.height);
+      for (let i = petals.length - 1; i >= 0; i--) {
+        const p = petals[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.angle += p.vAngle;
+
+        fCtx.save();
+        fCtx.translate(p.x, p.y);
+        fCtx.rotate(p.angle);
+        fCtx.fillStyle = p.color;
+        fCtx.globalAlpha = p.opacity;
+
+        // Draw curved organic petal
+        fCtx.beginPath();
+        fCtx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+        fCtx.fill();
+        fCtx.restore();
+
+        if (p.y > flowerCanvas.height + 20) {
+          petals.splice(i, 1);
+        }
+      }
+
+      if (petals.length > 0) {
+        requestAnimationFrame(animatePetals);
+      } else {
+        isPetalShowerActive = false;
+      }
+    }
+
+    /* Ambient Sparkles Background */
+    const aCanvas = document.getElementById('aura-canvas');
+    const aCtx = aCanvas.getContext('2d');
+    const particles = [];
+
+    for (let i = 0; i < 35; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 2.2 + 0.8,
+        vy: -0.25 - Math.random() * 0.45,
+        vx: (Math.random() - 0.5) * 0.3,
+        alpha: Math.random() * 0.6 + 0.2,
+        baseAlpha: Math.random() * 0.5 + 0.2
+      });
+    }
+
+    function renderAura() {
+      aCtx.clearRect(0, 0, aCanvas.width, aCanvas.height);
+      particles.forEach(p => {
+        p.y += p.vy;
+        p.x += p.vx;
+        if (p.y < -10) { p.y = aCanvas.height + 10; p.x = Math.random() * aCanvas.width; }
+        if (p.x < -10) p.x = aCanvas.width + 10;
+        if (p.x > aCanvas.width + 10) p.x = -10;
+
+        aCtx.beginPath();
+        aCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        aCtx.fillStyle = `rgba(245, 195, 91, ${p.alpha})`;
+        aCtx.shadowBlur = 8;
+        aCtx.shadowColor = '#ffe89e';
+        aCtx.fill();
+      });
+      requestAnimationFrame(renderAura);
+    }
+    renderAura();
+
+    /* Toast Notification Utility */
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-text');
+      text.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    /* Quick Puja Actions */
+    function triggerPooja(type) {
+      if (type === 'diya') {
+        ringTempleBell();
+        triggerFlowerShower();
+        showToast("🪔 दीप प्रज्वलित झाला! आपल्या जीवनातील अंधकार दूर होऊन प्रकाश लाभो.");
+      }
+    }
+
+    /* Blessing Rotation */
+    function updateBlessing() {
+      currentBlessingIndex = (currentBlessingIndex + 1) % BLESSINGS.length;
+      const b = BLESSINGS[currentBlessingIndex];
+      document.getElementById('shloka-text').textContent = b.shloka;
+      document.getElementById('shloka-meaning').textContent = b.meaning;
+      document.getElementById('shloka-quote').textContent = b.quote;
+      showToast("✨ आजचा नवीन आशिर्वाद प्राप्त झाला!");
+    }
+
+    /* Darshan Modal Controls */
+    function openDarshanModal(id) {
+      activeModalId = id;
+      const deity = DEITIES[id];
+      if (!deity) return;
+
+      document.getElementById('modal-img').src = deity.img;
+      document.getElementById('modal-num').textContent = deity.num;
+      document.getElementById('modal-title').textContent = deity.name;
+      document.getElementById('modal-location').textContent = deity.loc;
+      document.getElementById('modal-mantra').textContent = deity.mantra;
+      document.getElementById('modal-story').textContent = deity.story;
+
+      const overlay = document.getElementById('darshan-modal-overlay');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDarshanModal(e) {
+      if (e && e.target !== document.getElementById('darshan-modal-overlay') && !e.target.classList.contains('modal-close')) {
+        return;
+      }
+      document.getElementById('darshan-modal-overlay').classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+
+    function recordDarshan() {
+      if (activeModalId) {
+        completedDarshans.add(activeModalId);
+        localStorage.setItem('ashtavinayak_darshans', JSON.stringify([...completedDarshans]));
+        updateDarshanTracker();
+        triggerFlowerShower();
+        ringTempleBell();
+        showToast(`🙏 ${DEITIES[activeModalId].name} दर्शन पूर्ण! मनोकामना रुजू झाली.`);
+        closeDarshanModal();
+      }
+    }
+
+    function updateDarshanTracker() {
+      const count = completedDarshans.size;
+      const progressPercent = (count / 8) * 100;
+      document.getElementById('darshan-progress').style.width = `${progressPercent}%`;
+      document.getElementById('darshan-status').textContent = `${count} / ८ दर्शन पूर्ण`;
+
+      for (let i = 1; i <= 8; i++) {
+        const badge = document.getElementById(`badge-${i}`);
+        if (badge) {
+          if (completedDarshans.has(i)) {
+            badge.classList.add('active');
+          } else {
+            badge.classList.remove('active');
+          }
+        }
+      }
+
+      if (count === 8) {
+        showToast("🌟 धन्य दर्शन! आजचे संपूर्ण अष्टविनायक दर्शन पूर्ण झाले! गणपती बाप्पा मोरया!");
+      }
+    }
+
+    /* Sankalpa / Wish Box */
+    function submitWish() {
+      const input = document.getElementById('wish-input');
+      const val = input.value.trim();
+      if (!val) {
+        showToast("कृपया आपला संकल्प किंवा मनोकामना लिहा.");
+        return;
+      }
+
+      const existingWishes = JSON.parse(localStorage.getItem('ashtavinayak_wishes') || '[]');
+      existingWishes.unshift(val);
+      if (existingWishes.length > 5) existingWishes.pop();
+      localStorage.setItem('ashtavinayak_wishes', JSON.stringify(existingWishes));
+
+      input.value = '';
+      renderWishes();
+      triggerFlowerShower();
+      ringTempleBell();
+      showToast("✨ आपला संकल्प श्री गणेश चरणी रुजू झाला! सर्व मनोरथ सिद्धीस जावोत.");
+    }
+
+    function renderWishes() {
+      const existingWishes = JSON.parse(localStorage.getItem('ashtavinayak_wishes') || '[]');
+      const container = document.getElementById('active-wishes');
+      container.innerHTML = '';
+      existingWishes.forEach(wish => {
+        const chip = document.createElement('div');
+        chip.className = 'wish-card-chip';
+        chip.innerHTML = `<span>🪔</span><span>${escapeHtml(wish)}</span>`;
+        container.appendChild(chip);
+      });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    /* Event Listeners */
+    document.getElementById('bell-btn').addEventListener('click', ringTempleBell);
+    document.getElementById('flower-btn').addEventListener('click', triggerFlowerShower);
+    document.getElementById('refresh-blessing-btn').addEventListener('click', updateBlessing);
+
+    // Enter key on wish input
+    document.getElementById('wish-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitWish();
+    });
+
+    // Initial render
+    updateDarshanTracker();
+    renderWishes();
+  </script>
 </body>
 </html>
