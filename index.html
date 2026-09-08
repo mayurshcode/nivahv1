@@ -751,25 +751,17 @@
       filter: brightness(1.1);
     }
 
-    .active-wishes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.85rem;
-      margin-top: 1.5rem;
-    }
-
-    .wish-card-chip {
-      background: rgba(36, 21, 14, 0.85);
-      border: 1px solid rgba(245, 195, 91, 0.4);
-      border-radius: var(--radius-full);
-      padding: 0.5rem 1.2rem;
-      font-size: 0.9rem;
+    .wish-disclaimer {
+      font-size: 0.95rem;
       color: var(--gold-bright);
+      margin-bottom: 1.2rem;
+      font-style: italic;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      animation: fadeIn 0.4s ease;
+      justify-content: center;
+      gap: 0.5rem;
+      letter-spacing: 0.02em;
+      opacity: 0.95;
     }
 
     /* Modal for Detailed Darshan */
@@ -1340,16 +1332,17 @@
         Set your heartfelt prayer, daily intention, or hope for health, family peace, and success with faith. May Lord Ganesha bless your sincere wishes with fulfillment.
       </p>
 
+      <p class="wish-disclaimer">
+        <span>🕊️</span>
+        <span>Your message will not be saved or displayed you can type anything you wish to talk to god</span>
+      </p>
+
       <div class="wish-input-wrap">
-        <input type="text" id="wish-input" class="wish-input" placeholder="Type your prayer or wish here (e.g. good health, career success, family peace)..." />
+        <input type="text" id="wish-input" class="wish-input" placeholder="Type your wish or Prayer..." />
         <button class="wish-submit-btn" id="wish-submit-btn" onclick="submitWish()">
           <span>Offer Prayer</span>
           <span>✨</span>
         </button>
-      </div>
-
-      <div class="active-wishes" id="active-wishes">
-        <!-- Dynamic active wish chips -->
       </div>
     </section>
   </main>
@@ -1657,7 +1650,7 @@
 
     /* Toast Notification */
     let toastTimer = null;
-    function showToast(msg) {
+    function showToast(msg, duration = 3500) {
       const toast = document.getElementById('toast');
       const text = document.getElementById('toast-text');
       text.textContent = msg;
@@ -1665,7 +1658,7 @@
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => {
         toast.classList.remove('show');
-      }, 3500);
+      }, duration);
     }
 
     /* Quick Puja Actions */
@@ -1747,43 +1740,29 @@
       }
     }
 
-    /* Sankalpa / Wish Box */
+    /* Sankalpa / Wish Box (Privacy: Prayers are never saved or captured) */
     function submitWish() {
       const input = document.getElementById('wish-input');
       const val = input.value.trim();
       if (!val) {
-        showToast("Please enter your prayer or wish before offering.");
+        showToast("Please enter your wish or prayer before offering.", 1800);
         return;
       }
 
-      const existingWishes = JSON.parse(localStorage.getItem('ashtavinayak_wishes') || '[]');
-      existingWishes.unshift(val);
-      if (existingWishes.length > 5) existingWishes.pop();
-      localStorage.setItem('ashtavinayak_wishes', JSON.stringify(existingWishes));
-
+      // Immediately clear the input so nothing is kept on screen or in memory
       input.value = '';
-      renderWishes();
+
+      // Clean up any historical wishes from localStorage if present
+      try {
+        localStorage.removeItem('ashtavinayak_wishes');
+      } catch (e) {}
+
+      // Trigger bell chime and flower petals for spiritual release
       triggerFlowerShower();
       ringTempleBell();
-      showToast("✨ Your prayer has been offered at the lotus feet of Ganesha! May it be fulfilled.");
-    }
 
-    function renderWishes() {
-      const existingWishes = JSON.parse(localStorage.getItem('ashtavinayak_wishes') || '[]');
-      const container = document.getElementById('active-wishes');
-      container.innerHTML = '';
-      existingWishes.forEach(wish => {
-        const chip = document.createElement('div');
-        chip.className = 'wish-card-chip';
-        chip.innerHTML = `<span>🪔</span><span>${escapeHtml(wish)}</span>`;
-        container.appendChild(chip);
-      });
-    }
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
+      // Show popup for a moment that it is not saved and disappears with hope
+      showToast("✨ Wish is not saved and disappears with hope ASTAVINAYAKA's will fullfil it soon", 2000);
     }
 
     /* Event Listeners */
@@ -1798,7 +1777,6 @@
 
     // Initial render
     updateDarshanTracker();
-    renderWishes();
   </script>
 </body>
 </html>
