@@ -2138,43 +2138,41 @@
         strikeGain.connect(masterGain);
         strikeSource.start(now);
 
-        // Bronze partials with double strike
-        [0.0, 0.135].forEach((delay, sIdx) => {
-          const sNow = now + delay;
-          const sGainFactor = sIdx === 0 ? 1.0 : 0.65;
-          const baseFreq = 784;
+        // Single majestic strike with authentic Ashtadhatu Indian Bronze Partials
+        const baseFreq = 1188;
 
-          const bellPartials = [
-            { ratio: 0.500, gain: 0.50 * sGainFactor, decay: 5.0, type: 'sine', detune: 0 },
-            { ratio: 0.502, gain: 0.35 * sGainFactor, decay: 5.0, type: 'sine', detune: 1.8 },
-            { ratio: 1.000, gain: 0.80 * sGainFactor, decay: 4.2, type: 'sine', detune: 0 },
-            { ratio: 1.003, gain: 0.55 * sGainFactor, decay: 4.0, type: 'sine', detune: 2.5 },
-            { ratio: 1.189, gain: 0.50 * sGainFactor, decay: 3.8, type: 'sine', detune: -1.2 },
-            { ratio: 1.503, gain: 0.38 * sGainFactor, decay: 3.2, type: 'sine', detune: 1.5 },
-            { ratio: 2.000, gain: 0.32 * sGainFactor, decay: 2.6, type: 'sine', detune: 0 },
-            { ratio: 2.760, gain: 0.25 * sGainFactor, decay: 1.6, type: 'triangle', detune: 3.0 },
-            { ratio: 3.250, gain: 0.18 * sGainFactor, decay: 1.1, type: 'triangle', detune: -2.0 },
-            { ratio: 4.120, gain: 0.12 * sGainFactor, decay: 0.7, type: 'sine', detune: 4.0 }
-          ];
+        const bellPartials = [
+          { ratio: 0.250, gain: 0.45, decay: 5.5, type: 'sine', detune: 0 },
+          { ratio: 0.252, gain: 0.35, decay: 5.5, type: 'sine', detune: 1.8 },
+          { ratio: 0.500, gain: 0.70, decay: 5.0, type: 'sine', detune: 0 },
+          { ratio: 0.503, gain: 0.50, decay: 4.8, type: 'sine', detune: 2.2 },
+          { ratio: 1.000, gain: 1.00, decay: 4.5, type: 'sine', detune: 0 },
+          { ratio: 1.004, gain: 0.65, decay: 4.2, type: 'sine', detune: 3.5 },
+          { ratio: 1.189, gain: 0.60, decay: 3.8, type: 'sine', detune: -1.5 },
+          { ratio: 1.502, gain: 0.45, decay: 3.2, type: 'sine', detune: 1.2 },
+          { ratio: 1.782, gain: 0.35, decay: 2.8, type: 'sine', detune: -2.0 },
+          { ratio: 2.000, gain: 0.30, decay: 2.5, type: 'sine', detune: 0 },
+          { ratio: 2.760, gain: 0.22, decay: 1.6, type: 'triangle', detune: 4.0 },
+          { ratio: 3.250, gain: 0.16, decay: 1.1, type: 'triangle', detune: -3.0 }
+        ];
 
-          bellPartials.forEach(p => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
+        bellPartials.forEach(p => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
 
-            osc.type = p.type;
-            osc.frequency.setValueAtTime(baseFreq * p.ratio, sNow);
-            osc.detune.setValueAtTime(p.detune, sNow);
+          osc.type = p.type;
+          osc.frequency.setValueAtTime(baseFreq * p.ratio, now);
+          osc.detune.setValueAtTime(p.detune, now);
 
-            gain.gain.setValueAtTime(0.001, sNow);
-            gain.gain.linearRampToValueAtTime(p.gain, sNow + 0.005);
-            gain.gain.exponentialRampToValueAtTime(0.0001, sNow + p.decay);
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.linearRampToValueAtTime(p.gain, now + 0.004);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
 
-            osc.connect(gain);
-            gain.connect(masterGain);
+          osc.connect(gain);
+          gain.connect(masterGain);
 
-            osc.start(sNow);
-            osc.stop(sNow + p.decay + 0.1);
-          });
+          osc.start(now);
+          osc.stop(now + p.decay + 0.1);
         });
       } catch (e) {}
     }
