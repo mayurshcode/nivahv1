@@ -997,6 +997,364 @@
       letter-spacing: 0.05em;
     }
 
+    /* Sacred Donation / Deepdaan Seva Section */
+    .donation-section {
+      margin: 4.5rem auto 3rem;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 107, 26, 0.15) 0%, rgba(26, 17, 12, 0.9) 60%),
+                  rgba(20, 13, 9, 0.95);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 195, 91, 0.12);
+      overflow: hidden;
+    }
+
+    .donation-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold-grad);
+    }
+
+    .donation-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 195, 91, 0.12);
+      border: 1px solid var(--border-gold);
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-family: 'Cinzel', serif;
+      color: var(--gold-bright);
+      margin-bottom: 1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .donation-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.25rem;
+    }
+
+    .donation-core-card {
+      background: linear-gradient(135deg, rgba(255, 107, 26, 0.18), rgba(201, 36, 36, 0.25));
+      border: 1.5px solid rgba(245, 195, 91, 0.45);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.8rem;
+      max-width: 820px;
+      margin: 0 auto 1.75rem;
+      box-shadow: 0 6px 24px rgba(255, 107, 26, 0.15);
+      position: relative;
+    }
+
+    .donation-core-msg {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff4d1;
+      line-height: 1.6;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .donation-core-sub {
+      font-size: 0.88rem;
+      color: var(--gold-bright);
+      margin-top: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .donation-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 780px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.75;
+    }
+
+    /* Amount Preset Tiers */
+    .amount-presets-title {
+      font-size: 0.95rem;
+      color: var(--gold-bright);
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .amount-presets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+      max-width: 860px;
+      margin: 0 auto 2rem;
+    }
+
+    .amount-tier-btn {
+      background: rgba(36, 23, 16, 0.8);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      color: var(--chandan);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      min-width: 145px;
+      flex: 1 1 140px;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .amount-tier-btn:hover {
+      background: rgba(245, 195, 91, 0.18);
+      border-color: var(--gold-bright);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(245, 195, 91, 0.2);
+    }
+
+    .amount-tier-btn.active {
+      background: linear-gradient(135deg, rgba(255, 107, 26, 0.35), rgba(245, 195, 91, 0.25));
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 20px rgba(245, 195, 91, 0.4);
+      transform: scale(1.03);
+    }
+
+    .tier-val {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      font-family: 'Cinzel', serif;
+    }
+
+    .tier-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Custom Amount Input Box */
+    .custom-amount-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin: 0 auto 2.25rem;
+      max-width: 320px;
+      background: rgba(20, 13, 9, 0.8);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 0.35rem 1rem;
+    }
+
+    .custom-amount-wrap span {
+      color: var(--gold-bright);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .custom-amount-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--chandan);
+      font-size: 1rem;
+      font-weight: 600;
+      width: 100%;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .custom-amount-input::placeholder {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* Payment Containers (Desktop vs Mobile) */
+    .payment-views-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Desktop View (QR Code) */
+    .qr-card-sanctum {
+      background: rgba(14, 9, 6, 0.92);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .qr-frame {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 195, 91, 0.3);
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .qr-frame img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
+    }
+
+    .qr-scan-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gold-bright);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .upi-id-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(35, 22, 16, 0.85);
+      border: 1px dashed var(--border-gold);
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-full);
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: #ffd978;
+    }
+
+    .btn-copy-upi {
+      background: rgba(245, 195, 91, 0.2);
+      border: 1px solid var(--border-gold);
+      color: var(--chandan);
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy-upi:hover {
+      background: var(--gold-primary);
+      color: #0c0805;
+      font-weight: 600;
+    }
+
+    /* Mobile 1-Tap Google Pay / UPI Button */
+    .mobile-pay-card {
+      background: rgba(14, 9, 6, 0.92);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .btn-gpay-instant {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(135deg, #1a73e8 0%, #174ea6 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-full);
+      padding: 1rem 1.75rem;
+      font-size: 1.12rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-gpay-instant:hover, .btn-gpay-instant:active {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(26, 115, 232, 0.6);
+      background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+    }
+
+    .btn-all-upi-mobile {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(135deg, var(--kesari) 0%, var(--vermillion) 100%);
+      color: #ffffff;
+      border: 1px solid var(--gold-bright);
+      border-radius: var(--radius-full);
+      padding: 0.85rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--kesari-glow);
+      transition: all 0.3s ease;
+    }
+
+    .btn-all-upi-mobile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(255, 107, 26, 0.5);
+    }
+
+    /* Completed Offering Blessing Trigger Button */
+    .btn-offering-done {
+      background: transparent;
+      border: 1px solid rgba(245, 195, 91, 0.4);
+      color: var(--gold-bright);
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-offering-done:hover {
+      background: rgba(245, 195, 91, 0.15);
+      border-color: var(--gold-bright);
+      color: #ffffff;
+    }
+
+    .trust-assurance {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .trust-assurance span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
     /* Responsive */
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; padding-top: 2rem; }
@@ -1006,6 +1364,9 @@
       .modal-photo { min-height: 250px; height: 260px; }
       .yatra-banner { flex-direction: column; text-align: center; }
       .wish-input-wrap { flex-direction: column; }
+      .donation-section { padding: 2.5rem 1.25rem; }
+      .amount-presets-grid { gap: 0.6rem; }
+      .amount-tier-btn { min-width: 120px; padding: 0.7rem 0.9rem; }
     }
   </style>
 </head>
@@ -1042,6 +1403,10 @@
           <span>🌸</span>
           <span>Offer Flowers</span>
         </button>
+        <a href="#donation" class="btn-pooja" id="header-donate-btn" title="Sacred Offering / Seva" style="background: linear-gradient(135deg, rgba(245, 195, 91, 0.22), rgba(184, 123, 28, 0.32)); border-color: rgba(245, 195, 91, 0.5);">
+          <span>🪔</span>
+          <span>Seva / Donate</span>
+        </a>
       </div>
     </div>
   </header>
@@ -1069,6 +1434,10 @@
           <button class="puja-pill" id="hero-diya-btn" onclick="triggerPooja('diya')">
             <span>🪔</span>
             <span>Light Sacred Diya</span>
+          </button>
+          <button class="puja-pill" id="hero-donate-pill" onclick="document.getElementById('donation').scrollIntoView({behavior: 'smooth'})">
+            <span>🪔</span>
+            <span>Deepdaan / Seva</span>
           </button>
           <button class="puja-pill" id="hero-sankalpa-btn" onclick="document.getElementById('sankalpa').scrollIntoView({behavior: 'smooth'})">
             <span>✨</span>
@@ -1321,6 +1690,128 @@
             </button>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- Sacred Donation / Deepdaan Seva Section -->
+    <section class="wrap donation-section" id="donation">
+      <div class="donation-tag">
+        <span>🪔</span>
+        <span>Sacred Seva & Deepdaan</span>
+      </div>
+      <h2>Keep The Sacred Lamp Lit</h2>
+
+      <!-- Core Devotional Callout -->
+      <div class="donation-core-card">
+        <p class="donation-core-msg">
+          "Please donate whatever you can if you wish was fulfilled by AsthaVinayaka's to keep the lamp lighted (website running)"
+        </p>
+        <p class="donation-core-sub">
+          ✨ Your humble offering of gratitude keeps this digital sanctum alive, peaceful, and freely accessible to everyone.
+        </p>
+      </div>
+
+      <p class="donation-desc">
+        Just like the unbroken sacred flame (<em>Nandadeep</em>) that has illuminated the inner sanctum of Varadavinayak Mahad since 1892, this digital temple is sustained purely through devotees' faith and goodwill. We are committed to remaining 100% ad-free and open 24/7 to bring peace, solace, and daily blessings to seekers everywhere.
+      </p>
+
+      <!-- Amount Presets -->
+      <div class="amount-presets-title">Select Your Offering Amount (INR)</div>
+      <div class="amount-presets-grid">
+        <button type="button" class="amount-tier-btn" onclick="selectDonationAmount(21, this)">
+          <span class="tier-val">₹21</span>
+          <span class="tier-label">Shubh Shagun<br>Auspicious Start</span>
+        </button>
+        <button type="button" class="amount-tier-btn active" onclick="selectDonationAmount(51, this)">
+          <span class="tier-val">₹51</span>
+          <span class="tier-label">Deepdaan Seva<br>Keep Lamp Lit</span>
+        </button>
+        <button type="button" class="amount-tier-btn" onclick="selectDonationAmount(101, this)">
+          <span class="tier-val">₹101</span>
+          <span class="tier-label">Nitya Seva<br>Website Upkeep</span>
+        </button>
+        <button type="button" class="amount-tier-btn" onclick="selectDonationAmount(501, this)">
+          <span class="tier-val">₹501</span>
+          <span class="tier-label">Maha Seva<br>Sanctuary Patron</span>
+        </button>
+      </div>
+
+      <!-- Custom Amount Box -->
+      <div class="custom-amount-wrap">
+        <span>₹</span>
+        <input type="number" id="custom-donation-input" class="custom-amount-input" placeholder="Or enter any custom amount..." min="1" oninput="onCustomAmountChange(this.value)" />
+      </div>
+
+      <!-- Payment Interface (Device Aware) -->
+      <div class="payment-views-wrap">
+        <!-- Desktop / Laptop View (Dynamic QR Code) -->
+        <div id="upi-desktop-view" class="qr-card-sanctum">
+          <div class="qr-frame">
+            <img id="donation-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi%3A%2F%2Fpay%3Fpa%3Dmayurshcode%40okhdfcbank%26pn%3DAshtavinayak%2520Seva%26am%3D51%26cu%3DINR%26tn%3DDeepdaan%2520Seva%2520Website%2520Support" alt="Scan UPI QR Code to Donate" loading="lazy" />
+          </div>
+          <div class="qr-scan-hint">
+            <span>📱</span>
+            <span>Scan with Google Pay, PhonePe, Paytm, BHIM, or any UPI App</span>
+          </div>
+          <div class="upi-id-badge">
+            <span id="upi-id-text">mayurshcode@okhdfcbank</span>
+            <button type="button" class="btn-copy-upi" id="btn-copy-upi-desktop" onclick="copyUpiId('mayurshcode@okhdfcbank', this)">
+              <span>📋 Copy UPI ID</span>
+            </button>
+          </div>
+          <button type="button" class="btn-offering-done" onclick="blessAfterDonation()">
+            <span>🙏</span>
+            <span>I Have Completed My Sacred Offering</span>
+          </button>
+        </div>
+
+        <!-- Mobile / Smartphone View (1-Tap Google Pay & UPI Apps) -->
+        <div id="upi-mobile-view" class="mobile-pay-card" style="display: none;">
+          <div style="font-size: 0.95rem; color: var(--gold-bright); font-weight: 500;">
+            Tap below to open your preferred payment app instantly:
+          </div>
+
+          <a id="gpay-mobile-link" href="upi://pay?pa=mayurshcode@okhdfcbank&pn=Ashtavinayak%20Seva&am=51&cu=INR&tn=Deepdaan%20Seva%20Website%20Support" class="btn-gpay-instant">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+            </svg>
+            <span>Pay with Google Pay</span>
+          </a>
+
+          <a id="all-upi-mobile-link" href="upi://pay?pa=mayurshcode@okhdfcbank&pn=Ashtavinayak%20Seva&am=51&cu=INR&tn=Deepdaan%20Seva%20Website%20Support" class="btn-all-upi-mobile">
+            <span>⚡ Pay via PhonePe / Paytm / BHIM</span>
+          </a>
+
+          <div class="upi-id-badge" style="margin-top: 0.5rem;">
+            <span>mayurshcode@okhdfcbank</span>
+            <button type="button" class="btn-copy-upi" onclick="copyUpiId('mayurshcode@okhdfcbank', this)">
+              <span>📋 Copy</span>
+            </button>
+          </div>
+
+          <!-- Mobile Toggle to Show QR Code if paying from another device -->
+          <button type="button" class="btn-copy-upi" style="font-size:0.82rem; margin-top:0.25rem;" onclick="toggleMobileQR()">
+            <span id="mobile-qr-toggle-label">📷 Show QR Code to Scan</span>
+          </button>
+
+          <div id="mobile-qr-container" style="display:none; margin-top: 1rem;">
+            <div class="qr-frame">
+              <img id="mobile-donation-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi%3A%2F%2Fpay%3Fpa%3Dmayurshcode%40okhdfcbank%26pn%3DAshtavinayak%2520Seva%26am%3D51%26cu%3DINR%26tn%3DDeepdaan%2520Seva%2520Website%2520Support" alt="UPI QR Code" />
+            </div>
+          </div>
+
+          <button type="button" class="btn-offering-done" onclick="blessAfterDonation()">
+            <span>🙏</span>
+            <span>I Have Completed My Sacred Offering</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="trust-assurance">
+        <span>🛡️ 100% Dedicated to Website Infrastructure & Maintenance</span>
+        <span>🕊️ Zero Commercial Ads</span>
+        <span>🪔 Free 24/7 Global Access for Devotees</span>
       </div>
     </section>
 
@@ -1765,6 +2256,129 @@
       showToast("✨ Wish is not saved and disappears with hope ASTAVINAYAKA's will fullfil it soon", 2000);
     }
 
+    /* Sacred Donation / Deepdaan Seva Logic */
+    const UPI_CONFIG = {
+      pa: 'mayurshcode@okhdfcbank',
+      pn: 'Ashtavinayak Seva',
+      tn: 'Deepdaan Seva Website Support'
+    };
+    let currentDonationAmount = 51;
+
+    function buildUpiUrl(amount) {
+      const amt = (amount && Number(amount) > 0) ? Number(amount) : 51;
+      return `upi://pay?pa=${encodeURIComponent(UPI_CONFIG.pa)}&pn=${encodeURIComponent(UPI_CONFIG.pn)}&am=${amt}&cu=INR&tn=${encodeURIComponent(UPI_CONFIG.tn)}`;
+    }
+
+    function updateUpiLinks(amount) {
+      currentDonationAmount = amount;
+      const upiUrl = buildUpiUrl(amount);
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUrl)}`;
+
+      // Update Desktop QR
+      const desktopQr = document.getElementById('donation-qr-img');
+      if (desktopQr) desktopQr.src = qrUrl;
+
+      // Update Mobile QR
+      const mobileQr = document.getElementById('mobile-donation-qr-img');
+      if (mobileQr) mobileQr.src = qrUrl;
+
+      // Update Mobile 1-Tap Links
+      const gpayLink = document.getElementById('gpay-mobile-link');
+      if (gpayLink) gpayLink.href = upiUrl;
+
+      const allUpiLink = document.getElementById('all-upi-mobile-link');
+      if (allUpiLink) allUpiLink.href = upiUrl;
+    }
+
+    function selectDonationAmount(amt, btn) {
+      document.querySelectorAll('.amount-tier-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const customInput = document.getElementById('custom-donation-input');
+      if (customInput) customInput.value = '';
+      updateUpiLinks(amt);
+    }
+
+    function onCustomAmountChange(val) {
+      const cleanVal = Number(val);
+      if (cleanVal && cleanVal > 0) {
+        document.querySelectorAll('.amount-tier-btn').forEach(b => b.classList.remove('active'));
+        updateUpiLinks(cleanVal);
+      } else if (val === '') {
+        updateUpiLinks(51);
+      }
+    }
+
+    function copyUpiId(id, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(id).then(() => {
+          showCopyFeedback(btn, id);
+        }).catch(() => {
+          fallbackCopyText(id, btn);
+        });
+      } else {
+        fallbackCopyText(id, btn);
+      }
+    }
+
+    function fallbackCopyText(text, btn) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showCopyFeedback(btn, text);
+      } catch (err) {
+        showToast("UPI ID: " + text, 3000);
+      }
+      document.body.removeChild(textArea);
+    }
+
+    function showCopyFeedback(btn, id) {
+      if (btn) {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<span>✓ Copied!</span>';
+        setTimeout(() => { btn.innerHTML = originalHtml; }, 2000);
+      }
+      showToast(`✨ UPI ID copied: ${id}`, 2200);
+    }
+
+    function toggleMobileQR() {
+      const qrContainer = document.getElementById('mobile-qr-container');
+      const label = document.getElementById('mobile-qr-toggle-label');
+      if (qrContainer.style.display === 'none' || !qrContainer.style.display) {
+        qrContainer.style.display = 'block';
+        if (label) label.textContent = '▲ Hide QR Code';
+      } else {
+        qrContainer.style.display = 'none';
+        if (label) label.textContent = '📷 Show QR Code to Scan';
+      }
+    }
+
+    function blessAfterDonation() {
+      ringTempleBell();
+      triggerFlowerShower();
+      showToast("🪔 Blessed Offering! May Lord Ganesha bring boundless happiness, health, and prosperity to your family.", 4000);
+    }
+
+    function detectDeviceAndSetDonationView() {
+      const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+      const desktopView = document.getElementById('upi-desktop-view');
+      const mobileView = document.getElementById('upi-mobile-view');
+
+      if (desktopView && mobileView) {
+        if (isMobile) {
+          mobileView.style.display = 'flex';
+          desktopView.style.display = 'none';
+        } else {
+          desktopView.style.display = 'flex';
+          mobileView.style.display = 'none';
+        }
+      }
+    }
+
     /* Event Listeners */
     document.getElementById('bell-btn').addEventListener('click', ringTempleBell);
     document.getElementById('flower-btn').addEventListener('click', triggerFlowerShower);
@@ -1775,8 +2389,12 @@
       if (e.key === 'Enter') submitWish();
     });
 
+    window.addEventListener('resize', detectDeviceAndSetDonationView);
+
     // Initial render
     updateDarshanTracker();
+    detectDeviceAndSetDonationView();
+    updateUpiLinks(51);
   </script>
 </body>
 </html>
