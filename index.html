@@ -1008,6 +1008,47 @@
       margin: 0 auto 1.5rem;
     }
 
+    /* Total Devotee Visits Counter */
+    .visitor-counter-card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(35, 22, 16, 0.85), rgba(18, 11, 7, 0.95));
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 2rem;
+      margin: 0.5rem auto 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 195, 91, 0.12);
+    }
+
+    .counter-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.25rem;
+    }
+
+    .counter-display {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--gold-text-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 20px rgba(245, 195, 91, 0.35);
+    }
+
+    .counter-subtext {
+      font-size: 0.76rem;
+      color: var(--text-dim);
+      margin-top: 0.15rem;
+    }
+
     .footer-copy {
       color: var(--text-dim);
       font-size: 0.84rem;
@@ -1901,6 +1942,17 @@
         May the divine grace of the Ashtavinayak fill your mind with stillness, your heart with joy, and your home with abundance.
       </p>
       <div class="gold-divider"><span>ॐ</span></div>
+
+      <!-- Sacred Devotee Visit Counter -->
+      <div class="visitor-counter-card">
+        <div class="counter-badge">
+          <span>🪔</span>
+          <span>Total Blessed Devotee Visits</span>
+        </div>
+        <div class="counter-display" id="total-visitor-count">10,000</div>
+        <div class="counter-subtext">Sacred darshans & prayers offered worldwide</div>
+      </div>
+
       <p class="footer-copy">
         © 2026 Shree Ashtavinayak Yatra • Stay Blessed & Peaceful • Sukhakarta Dukhharta
       </p>
@@ -2022,23 +2074,48 @@
       return audioCtx;
     }
 
+    /* Authentic Temple Bell Audio Player */
+    let preloadedBellAudio = null;
+    try {
+      preloadedBellAudio = new Audio('sounds/temple-bell.wav');
+      preloadedBellAudio.volume = 0.95;
+      preloadedBellAudio.preload = 'auto';
+    } catch (e) {}
+
     function ringTempleBell() {
       const bellIcon = document.getElementById('bell-icon');
       if (bellIcon) {
         bellIcon.classList.add('bell-ringing');
-        setTimeout(() => bellIcon.classList.remove('bell-ringing'), 1200);
+        setTimeout(() => bellIcon.classList.remove('bell-ringing'), 1500);
       }
 
+      // 1. Play authentic recorded studio temple bell audio
+      try {
+        const audio = new Audio('sounds/temple-bell.wav');
+        audio.volume = 0.95;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            playSyntheticTempleBell();
+          });
+        }
+      } catch (e) {
+        playSyntheticTempleBell();
+      }
+
+      showToast("🔔 Om Gam Ganapataye Namaha! The sacred temple bell has rung.");
+    }
+
+    function playSyntheticTempleBell() {
       try {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
 
-        // Master Output Stage with warm compression characteristics
         const masterGain = ctx.createGain();
         masterGain.gain.setValueAtTime(0.85, now);
         masterGain.connect(ctx.destination);
 
-        // 1. Clapper Impact (Sharp metallic bronze transient click)
+        // Clapper strike transient
         const strikeBuffer = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.04), ctx.sampleRate);
         const strikeData = strikeBuffer.getChannelData(0);
         for (let i = 0; i < strikeData.length; i++) {
@@ -2061,70 +2138,45 @@
         strikeGain.connect(masterGain);
         strikeSource.start(now);
 
-        // 2. Authentic Indian Temple Bell (Ghanta) Inharmonic Partials
-        // Base resonance tuned to 528 Hz (Sacred Vedic / Temple Ghanta pitch)
-        const baseFreq = 528;
+        // Bronze partials with double strike
+        [0.0, 0.135].forEach((delay, sIdx) => {
+          const sNow = now + delay;
+          const sGainFactor = sIdx === 0 ? 1.0 : 0.65;
+          const baseFreq = 784;
 
-        // Physical bronze bell partial ratios, relative gains, decay times, and subtle phase beating
-        const bellPartials = [
-          // Deep Hum Tone (Sustained resonant "Om" tail with acoustic beating ~2Hz)
-          { ratio: 0.500, gain: 0.55, decay: 4.8, type: 'sine', detune: 0 },
-          { ratio: 0.503, gain: 0.45, decay: 4.8, type: 'sine', detune: 2.2 },
-          // Prime / Fundamental (Primary gong body)
-          { ratio: 1.000, gain: 0.70, decay: 4.2, type: 'sine', detune: 0 },
-          { ratio: 1.004, gain: 0.50, decay: 4.0, type: 'sine', detune: 3.0 },
-          // Tierce (Minor Third: 1.189x) - the unmistakable spiritual signature of temple bronze
-          { ratio: 1.189, gain: 0.42, decay: 3.6, type: 'sine', detune: 1.0 },
-          // Quint (Fifth: 1.50x)
-          { ratio: 1.503, gain: 0.32, decay: 3.2, type: 'sine', detune: -2.0 },
-          // Nominal (Octave: 2.00x)
-          { ratio: 2.000, gain: 0.28, decay: 2.8, type: 'sine', detune: 0 },
-          // High Brassy Overtones (Shimmering ring that quickly settles into pure tone)
-          { ratio: 2.760, gain: 0.22, decay: 1.8, type: 'triangle', detune: 4.0 },
-          { ratio: 3.250, gain: 0.16, decay: 1.2, type: 'triangle', detune: -3.0 },
-          { ratio: 4.120, gain: 0.10, decay: 0.8, type: 'sine', detune: 5.0 },
-          { ratio: 5.400, gain: 0.06, decay: 0.5, type: 'sine', detune: 0 }
-        ];
+          const bellPartials = [
+            { ratio: 0.500, gain: 0.50 * sGainFactor, decay: 5.0, type: 'sine', detune: 0 },
+            { ratio: 0.502, gain: 0.35 * sGainFactor, decay: 5.0, type: 'sine', detune: 1.8 },
+            { ratio: 1.000, gain: 0.80 * sGainFactor, decay: 4.2, type: 'sine', detune: 0 },
+            { ratio: 1.003, gain: 0.55 * sGainFactor, decay: 4.0, type: 'sine', detune: 2.5 },
+            { ratio: 1.189, gain: 0.50 * sGainFactor, decay: 3.8, type: 'sine', detune: -1.2 },
+            { ratio: 1.503, gain: 0.38 * sGainFactor, decay: 3.2, type: 'sine', detune: 1.5 },
+            { ratio: 2.000, gain: 0.32 * sGainFactor, decay: 2.6, type: 'sine', detune: 0 },
+            { ratio: 2.760, gain: 0.25 * sGainFactor, decay: 1.6, type: 'triangle', detune: 3.0 },
+            { ratio: 3.250, gain: 0.18 * sGainFactor, decay: 1.1, type: 'triangle', detune: -2.0 },
+            { ratio: 4.120, gain: 0.12 * sGainFactor, decay: 0.7, type: 'sine', detune: 4.0 }
+          ];
 
-        // LFO for natural acoustic tremolo wavering of the heavy brass bell
-        const lfo = ctx.createOscillator();
-        const lfoGain = ctx.createGain();
-        lfo.frequency.setValueAtTime(2.2, now); // 2.2 Hz wavering rate
-        lfoGain.gain.setValueAtTime(0.08, now);
-        lfo.connect(lfoGain);
-        lfo.start(now);
-        lfo.stop(now + 5.0);
+          bellPartials.forEach(p => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
 
-        bellPartials.forEach(p => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
+            osc.type = p.type;
+            osc.frequency.setValueAtTime(baseFreq * p.ratio, sNow);
+            osc.detune.setValueAtTime(p.detune, sNow);
 
-          osc.type = p.type;
-          osc.frequency.setValueAtTime(baseFreq * p.ratio, now);
-          osc.detune.setValueAtTime(p.detune, now);
+            gain.gain.setValueAtTime(0.001, sNow);
+            gain.gain.linearRampToValueAtTime(p.gain, sNow + 0.005);
+            gain.gain.exponentialRampToValueAtTime(0.0001, sNow + p.decay);
 
-          // Fast 5ms attack for immediate strike, followed by natural exponential decay
-          gain.gain.setValueAtTime(0.001, now);
-          gain.gain.linearRampToValueAtTime(p.gain, now + 0.005);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
+            osc.connect(gain);
+            gain.connect(masterGain);
 
-          // Apply subtle LFO modulation to fundamental and hum frequencies
-          if (p.ratio <= 1.0) {
-            lfoGain.connect(gain.gain);
-          }
-
-          osc.connect(gain);
-          gain.connect(masterGain);
-
-          osc.start(now);
-          osc.stop(now + p.decay + 0.1);
+            osc.start(sNow);
+            osc.stop(sNow + p.decay + 0.1);
+          });
         });
-
-      } catch (e) {
-        console.log("Audio not supported or blocked", e);
-      }
-
-      showToast("🔔 Om Gam Ganapataye Namaha! The sacred temple bell has rung.");
+      } catch (e) {}
     }
 
     /* Pushpavrushti Flower Petal Shower */
@@ -2487,10 +2539,33 @@
 
     window.addEventListener('resize', detectDeviceAndSetDonationView);
 
+    /* Sacred Devotee Visits Counter Starting at 10,000 */
+    function initVisitorCounter() {
+      const BASE_COUNT = 10000;
+      let count = parseInt(localStorage.getItem('ashtavinayak_total_visitors'), 10);
+      
+      if (!count || isNaN(count) || count < BASE_COUNT) {
+        count = BASE_COUNT;
+      }
+      
+      const hasCountedSession = sessionStorage.getItem('ashtavinayak_session_visited');
+      if (!hasCountedSession) {
+        count += 1;
+        sessionStorage.setItem('ashtavinayak_session_visited', 'true');
+        localStorage.setItem('ashtavinayak_total_visitors', count.toString());
+      }
+      
+      const counterEl = document.getElementById('total-visitor-count');
+      if (counterEl) {
+        counterEl.textContent = count.toLocaleString('en-IN');
+      }
+    }
+
     // Initial render
     updateDarshanTracker();
     detectDeviceAndSetDonationView();
     updateUpiLinks(51);
+    initVisitorCounter();
   </script>
 </body>
 </html>
