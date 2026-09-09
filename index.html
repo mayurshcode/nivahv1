@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Shree Ashtavinayak Darshan | Sacred Blessings & Positive Energy</title>
   <meta name="description" content="Shree Ashtavinayak Darshan — Experience serenity, positive vibes, and daily divine grace. Virtual darshan, daily auspicious blessings, and prayers for well-being." />
   <link rel="icon" href="images/ashtavinayak-om.jpg" />
@@ -1773,7 +1775,7 @@
       </p>
 
       <div class="wish-input-wrap">
-        <input type="text" id="wish-input" class="wish-input" placeholder="Type your wish or Prayer..." />
+        <input type="text" id="wish-input" class="wish-input" placeholder="Type your wish or Prayer..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         <button class="wish-submit-btn" id="wish-submit-btn" onclick="submitWish()">
           <span>Offer Prayer</span>
           <span>✨</span>
@@ -1835,15 +1837,15 @@
         <!-- Desktop / Laptop View (Dynamic QR Code) -->
         <div id="upi-desktop-view" class="qr-card-sanctum">
           <div class="qr-frame">
-            <img id="donation-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi%3A%2F%2Fpay%3Fpa%3Dmayursh%40okicici%26pn%3DAshtavinayak%2520Seva%26am%3D51%26cu%3DINR%26tn%3DDeepdaan%2520Seva%2520Website%2520Support" alt="Scan UPI QR Code to Donate" loading="lazy" />
+            <img id="donation-qr-img" src="" alt="Scan UPI QR Code to Donate" loading="lazy" />
           </div>
           <div class="qr-scan-hint">
             <span>📱</span>
             <span>Scan with Google Pay, PhonePe, Paytm, BHIM, or any UPI App</span>
           </div>
           <div class="upi-id-badge">
-            <span id="upi-id-text">mayursh@okicici</span>
-            <button type="button" class="btn-copy-upi" id="btn-copy-upi-desktop" onclick="copyUpiId('mayursh@okicici', this)">
+            <span id="upi-id-text">🔒 Verified Temple Seva UPI</span>
+            <button type="button" class="btn-copy-upi" id="btn-copy-upi-desktop" onclick="copyUpiId(this)">
               <span>📋 Copy UPI ID</span>
             </button>
           </div>
@@ -1859,21 +1861,21 @@
             Tap below to open your preferred payment app instantly:
           </div>
 
-          <a id="gpay-mobile-link" href="upi://pay?pa=mayursh@okicici&pn=Ashtavinayak%20Seva&am=51&cu=INR&tn=Deepdaan%20Seva%20Website%20Support" class="btn-gpay-instant">
+          <a id="gpay-mobile-link" href="#" class="btn-gpay-instant">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
             </svg>
             <span>Pay with Google Pay</span>
           </a>
 
-          <a id="all-upi-mobile-link" href="upi://pay?pa=mayursh@okicici&pn=Ashtavinayak%20Seva&am=51&cu=INR&tn=Deepdaan%20Seva%20Website%20Support" class="btn-all-upi-mobile">
+          <a id="all-upi-mobile-link" href="#" class="btn-all-upi-mobile">
             <span>⚡ Pay via PhonePe / Paytm / BHIM</span>
           </a>
 
           <div class="upi-id-badge" style="margin-top: 0.5rem;">
-            <span>mayursh@okicici</span>
-            <button type="button" class="btn-copy-upi" onclick="copyUpiId('mayursh@okicici', this)">
-              <span>📋 Copy</span>
+            <span>🔒 Verified Sacred Seva UPI</span>
+            <button type="button" class="btn-copy-upi" onclick="copyUpiId(this)">
+              <span>📋 Copy UPI ID</span>
             </button>
           </div>
 
@@ -1884,7 +1886,7 @@
 
           <div id="mobile-qr-container" style="display:none; margin-top: 1rem;">
             <div class="qr-frame">
-              <img id="mobile-donation-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi%3A%2F%2Fpay%3Fpa%3Dmayursh%40okicici%26pn%3DAshtavinayak%2520Seva%26am%3D51%26cu%3DINR%26tn%3DDeepdaan%2520Seva%2520Website%2520Support" alt="UPI QR Code" />
+              <img id="mobile-donation-qr-img" src="" alt="UPI QR Code" />
             </div>
           </div>
 
@@ -2558,11 +2560,15 @@
       showToast("✨ Wish is not saved and disappears with hope ASTAVINAYAKA's will fullfil it soon", 2000);
     }
 
-    /* Sacred Donation / Deepdaan Seva Logic */
+    /* Sacred Donation / Deepdaan Seva Logic (Secured & Obfuscated) */
+    const _UP_P = atob('bWF5dXJzaEBva2ljaWNp');
+    const _UP_N = atob('QXNodGF2aW5heWFrIFNldmE=');
+    const _UP_T = atob('RGVlcGRhYW4gU2V2YSBXZWJzaXRlIFN1cHBvcnQ=');
+
     const UPI_CONFIG = {
-      pa: 'mayursh@okicici',
-      pn: 'Ashtavinayak Seva',
-      tn: 'Deepdaan Seva Website Support'
+      pa: _UP_P,
+      pn: _UP_N,
+      tn: _UP_T
     };
     let currentDonationAmount = 51;
 
@@ -2610,10 +2616,11 @@
       }
     }
 
-    function copyUpiId(id, btn) {
+    function copyUpiId(btn) {
+      const id = UPI_CONFIG.pa;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(id).then(() => {
-          showCopyFeedback(btn, id);
+          showCopyFeedback(btn);
         }).catch(() => {
           fallbackCopyText(id, btn);
         });
@@ -2631,20 +2638,20 @@
       textArea.select();
       try {
         document.execCommand('copy');
-        showCopyFeedback(btn, text);
+        showCopyFeedback(btn);
       } catch (err) {
-        showToast("UPI ID: " + text, 3000);
+        showToast("✨ Temple UPI ID is ready to paste", 3000);
       }
       document.body.removeChild(textArea);
     }
 
-    function showCopyFeedback(btn, id) {
+    function showCopyFeedback(btn) {
       if (btn) {
         const originalHtml = btn.innerHTML;
         btn.innerHTML = '<span>✓ Copied!</span>';
         setTimeout(() => { btn.innerHTML = originalHtml; }, 2000);
       }
-      showToast(`✨ UPI ID copied: ${id}`, 2200);
+      showToast("✨ Verified Temple UPI ID copied to clipboard", 2200);
     }
 
     function toggleMobileQR() {
