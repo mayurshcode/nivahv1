@@ -2024,31 +2024,102 @@
 
     function ringTempleBell() {
       const bellIcon = document.getElementById('bell-icon');
-      bellIcon.classList.add('bell-ringing');
-      setTimeout(() => bellIcon.classList.remove('bell-ringing'), 800);
+      if (bellIcon) {
+        bellIcon.classList.add('bell-ringing');
+        setTimeout(() => bellIcon.classList.remove('bell-ringing'), 1200);
+      }
 
       try {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
-        const frequencies = [587.33, 880, 1174.66, 1760, 2349.32]; // D5, A5, D6, A6 harmonics
-        const gains = [0.45, 0.25, 0.15, 0.08, 0.04];
 
-        frequencies.forEach((freq, idx) => {
+        // Master Output Stage with warm compression characteristics
+        const masterGain = ctx.createGain();
+        masterGain.gain.setValueAtTime(0.85, now);
+        masterGain.connect(ctx.destination);
+
+        // 1. Clapper Impact (Sharp metallic bronze transient click)
+        const strikeBuffer = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 0.04), ctx.sampleRate);
+        const strikeData = strikeBuffer.getChannelData(0);
+        for (let i = 0; i < strikeData.length; i++) {
+          strikeData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.005));
+        }
+        const strikeSource = ctx.createBufferSource();
+        strikeSource.buffer = strikeBuffer;
+
+        const strikeFilter = ctx.createBiquadFilter();
+        strikeFilter.type = 'bandpass';
+        strikeFilter.frequency.setValueAtTime(3600, now);
+        strikeFilter.Q.setValueAtTime(3.5, now);
+
+        const strikeGain = ctx.createGain();
+        strikeGain.gain.setValueAtTime(0.4, now);
+        strikeGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
+
+        strikeSource.connect(strikeFilter);
+        strikeFilter.connect(strikeGain);
+        strikeGain.connect(masterGain);
+        strikeSource.start(now);
+
+        // 2. Authentic Indian Temple Bell (Ghanta) Inharmonic Partials
+        // Base resonance tuned to 528 Hz (Sacred Vedic / Temple Ghanta pitch)
+        const baseFreq = 528;
+
+        // Physical bronze bell partial ratios, relative gains, decay times, and subtle phase beating
+        const bellPartials = [
+          // Deep Hum Tone (Sustained resonant "Om" tail with acoustic beating ~2Hz)
+          { ratio: 0.500, gain: 0.55, decay: 4.8, type: 'sine', detune: 0 },
+          { ratio: 0.503, gain: 0.45, decay: 4.8, type: 'sine', detune: 2.2 },
+          // Prime / Fundamental (Primary gong body)
+          { ratio: 1.000, gain: 0.70, decay: 4.2, type: 'sine', detune: 0 },
+          { ratio: 1.004, gain: 0.50, decay: 4.0, type: 'sine', detune: 3.0 },
+          // Tierce (Minor Third: 1.189x) - the unmistakable spiritual signature of temple bronze
+          { ratio: 1.189, gain: 0.42, decay: 3.6, type: 'sine', detune: 1.0 },
+          // Quint (Fifth: 1.50x)
+          { ratio: 1.503, gain: 0.32, decay: 3.2, type: 'sine', detune: -2.0 },
+          // Nominal (Octave: 2.00x)
+          { ratio: 2.000, gain: 0.28, decay: 2.8, type: 'sine', detune: 0 },
+          // High Brassy Overtones (Shimmering ring that quickly settles into pure tone)
+          { ratio: 2.760, gain: 0.22, decay: 1.8, type: 'triangle', detune: 4.0 },
+          { ratio: 3.250, gain: 0.16, decay: 1.2, type: 'triangle', detune: -3.0 },
+          { ratio: 4.120, gain: 0.10, decay: 0.8, type: 'sine', detune: 5.0 },
+          { ratio: 5.400, gain: 0.06, decay: 0.5, type: 'sine', detune: 0 }
+        ];
+
+        // LFO for natural acoustic tremolo wavering of the heavy brass bell
+        const lfo = ctx.createOscillator();
+        const lfoGain = ctx.createGain();
+        lfo.frequency.setValueAtTime(2.2, now); // 2.2 Hz wavering rate
+        lfoGain.gain.setValueAtTime(0.08, now);
+        lfo.connect(lfoGain);
+        lfo.start(now);
+        lfo.stop(now + 5.0);
+
+        bellPartials.forEach(p => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
 
-          osc.type = idx === 0 ? 'sine' : 'triangle';
-          osc.frequency.setValueAtTime(freq, now);
+          osc.type = p.type;
+          osc.frequency.setValueAtTime(baseFreq * p.ratio, now);
+          osc.detune.setValueAtTime(p.detune, now);
 
-          gain.gain.setValueAtTime(gains[idx], now);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
+          // Fast 5ms attack for immediate strike, followed by natural exponential decay
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.linearRampToValueAtTime(p.gain, now + 0.005);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
+
+          // Apply subtle LFO modulation to fundamental and hum frequencies
+          if (p.ratio <= 1.0) {
+            lfoGain.connect(gain.gain);
+          }
 
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(masterGain);
 
           osc.start(now);
-          osc.stop(now + 2.9);
+          osc.stop(now + p.decay + 0.1);
         });
+
       } catch (e) {
         console.log("Audio not supported or blocked", e);
       }
