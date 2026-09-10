@@ -2653,7 +2653,18 @@
       }
     }
 
+    function copyUpiIdSilent() {
+      const id = UPI_CONFIG.pa;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(id).catch(() => {});
+        }
+      } catch (e) {}
+    }
+
     function openPaymentApp(app) {
+      copyUpiIdSilent();
+
       const amt = (currentDonationAmount && Number(currentDonationAmount) > 0) ? Number(currentDonationAmount) : 51;
       const pa = encodeURIComponent(UPI_CONFIG.pa);
       const pn = encodeURIComponent(UPI_CONFIG.pn);
@@ -2670,12 +2681,16 @@
           // Standard Google Pay URI scheme on Android
           targetUrl = `tez://upi/pay?${params}`;
         }
+        showToast("✨ Opening Google Pay... (UPI ID copied to clipboard)", 3500);
       } else if (app === 'phonepe') {
         targetUrl = `phonepe://pay?${params}`;
+        showToast("✨ Opening PhonePe... (UPI ID copied to clipboard)", 3500);
       } else if (app === 'paytm') {
         targetUrl = `paytmmp://pay?${params}`;
+        showToast("✨ Opening Paytm... (UPI ID copied to clipboard)", 3500);
       } else {
         targetUrl = `upi://pay?${params}`;
+        showToast("✨ Opening UPI App... (UPI ID copied to clipboard)", 3500);
       }
 
       window.location.href = targetUrl;
