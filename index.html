@@ -1332,8 +1332,8 @@
       color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: var(--radius-full);
-      padding: 1rem 1.75rem;
-      font-size: 1.12rem;
+      padding: 0.95rem 1.75rem;
+      font-size: 1.08rem;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -1351,6 +1351,57 @@
       background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
     }
 
+    .btn-phonepe-instant {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(135deg, #5f259f 0%, #3f1073 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-full);
+      padding: 0.95rem 1.75rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(95, 37, 159, 0.4);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-phonepe-instant:hover, .btn-phonepe-instant:active {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(95, 37, 159, 0.6);
+      background: linear-gradient(135deg, #7b32ce 0%, #5f259f 100%);
+    }
+
+    .btn-paytm-instant {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(135deg, #002e6e 0%, #00b9f1 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-full);
+      padding: 0.9rem 1.75rem;
+      font-size: 1.02rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0, 185, 241, 0.35);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-paytm-instant:hover, .btn-paytm-instant:active {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 185, 241, 0.55);
+    }
+
     .btn-all-upi-mobile {
       width: 100%;
       max-width: 380px;
@@ -1359,7 +1410,7 @@
       border: 1px solid var(--gold-bright);
       border-radius: var(--radius-full);
       padding: 0.85rem 1.5rem;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -1855,22 +1906,30 @@
           </button>
         </div>
 
-        <!-- Mobile / Smartphone View (1-Tap Google Pay & UPI Apps) -->
+        <!-- Mobile / Smartphone View (Direct 1-Tap Dedicated Payment Apps) -->
         <div id="upi-mobile-view" class="mobile-pay-card" style="display: none;">
-          <div style="font-size: 0.95rem; color: var(--gold-bright); font-weight: 500;">
-            Tap below to open your preferred payment app instantly:
+          <div style="font-size: 0.95rem; color: var(--gold-bright); font-weight: 500; text-align: center;">
+            Tap below to open your preferred payment app directly:
           </div>
 
-          <a id="gpay-mobile-link" href="#" class="btn-gpay-instant">
+          <button type="button" class="btn-gpay-instant" onclick="openPaymentApp('gpay')">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
             </svg>
             <span>Pay with Google Pay</span>
-          </a>
+          </button>
 
-          <a id="all-upi-mobile-link" href="#" class="btn-all-upi-mobile">
-            <span>⚡ Pay via PhonePe / Paytm / BHIM</span>
-          </a>
+          <button type="button" class="btn-phonepe-instant" onclick="openPaymentApp('phonepe')">
+            <span>🟣 Pay with PhonePe</span>
+          </button>
+
+          <button type="button" class="btn-paytm-instant" onclick="openPaymentApp('paytm')">
+            <span>🔷 Pay with Paytm</span>
+          </button>
+
+          <button type="button" class="btn-all-upi-mobile" onclick="openPaymentApp('all')">
+            <span>⚡ Other UPI Apps (BHIM / Cred / Bank)</span>
+          </button>
 
           <div class="upi-id-badge" style="margin-top: 0.5rem;">
             <span>🔒 Verified Sacred Seva UPI</span>
@@ -2595,6 +2654,48 @@
       }
     }
 
+    function openPaymentApp(app) {
+      const amt = (currentDonationAmount && Number(currentDonationAmount) > 0) ? Number(currentDonationAmount) : 51;
+      const pa = encodeURIComponent(UPI_CONFIG.pa);
+      const pn = encodeURIComponent(UPI_CONFIG.pn);
+      const tn = encodeURIComponent(UPI_CONFIG.tn);
+      const params = `pa=${pa}&pn=${pn}&am=${amt}&cu=INR&tn=${tn}`;
+      
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      let targetUrl = `upi://pay?${params}`;
+
+      if (app === 'gpay') {
+        if (isAndroid) {
+          // Explicit Android package intent for Google Pay (prevents WhatsApp hijack)
+          targetUrl = `intent://pay?${params}#Intent;scheme=upi;package=com.google.android.apps.npx.mandate.p2p;end;`;
+        } else if (isIOS) {
+          targetUrl = `gpay://upi/pay?${params}`;
+        } else {
+          targetUrl = `tez://upi/pay?${params}`;
+        }
+      } else if (app === 'phonepe') {
+        if (isAndroid) {
+          // Explicit Android package intent for PhonePe
+          targetUrl = `intent://pay?${params}#Intent;scheme=upi;package=com.phonepe.app;end;`;
+        } else {
+          targetUrl = `phonepe://pay?${params}`;
+        }
+      } else if (app === 'paytm') {
+        if (isAndroid) {
+          // Explicit Android package intent for Paytm
+          targetUrl = `intent://pay?${params}#Intent;scheme=upi;package=net.one97.paytm;end;`;
+        } else {
+          targetUrl = `paytmmp://pay?${params}`;
+        }
+      } else {
+        targetUrl = `upi://pay?${params}`;
+      }
+
+      window.location.href = targetUrl;
+    }
+
     function updateUpiLinks(amount) {
       currentDonationAmount = amount;
       const upiUrl = buildUpiUrl(amount);
@@ -2607,13 +2708,6 @@
       // Update Mobile QR
       const mobileQr = document.getElementById('mobile-donation-qr-img');
       if (mobileQr) mobileQr.src = qrUrl;
-
-      // Update Mobile 1-Tap Links
-      const gpayLink = document.getElementById('gpay-mobile-link');
-      if (gpayLink) gpayLink.href = upiUrl;
-
-      const allUpiLink = document.getElementById('all-upi-mobile-link');
-      if (allUpiLink) allUpiLink.href = upiUrl;
     }
 
     function selectDonationAmount(amt, btn) {
